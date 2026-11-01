@@ -1,0 +1,1229 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="2026年（令和8年）4月以降に実施された第35回全国小学生バドミントン選手権大会（全小）の都道府県予選と地方ブロック予選について、各連盟公式ページで2026年の結果であることを確認できたリンクをまとめたポータルです。ABC大会の予選は含みません（2026年11月1日調査）。" />
+<link rel="icon" href="data:," />
+<title>全小予選結果ポータル｜第35回全国小学生バドミントン選手権大会</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+<style>
+:root {
+--bg: #f4f6f3;
+--surface: #ffffff;
+--surface-2: #eef2ec;
+--ink: #1c2420;
+--ink-2: #4c5a52;
+--ink-3: #71806f;
+--line: #d9e0d6;
+--brand: #0e6b4a;
+--brand-strong: #0a553b;
+--brand-soft: #e2f1e9;
+--accent: #e8a13a;
+--ok: #178a4c;
+--ok-bg: #e3f4e9;
+--wait: #6b756d;
+--wait-bg: #ecefec;
+--unpub: #9a6206;
+--unpub-bg: #fdf0d5;
+--check: #33608c;
+--check-bg: #e3ecf7;
+--focus: #ffb02e;
+--shadow: 0 1px 2px rgba(20, 40, 30,.06), 0 6px 18px rgba(20, 40, 30,.06);
+--radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+:root {
+--bg: #101613;
+--surface: #1a211d;
+--surface-2: #232b26;
+--ink: #eef3ee;
+--ink-2: #b7c4b9;
+--ink-3: #8b9a8e;
+--line: #33413a;
+--brand: #2fae7f;
+--brand-strong: #57c79b;
+--brand-soft: #173328;
+--accent: #e8a13a;
+--ok: #4cc983;
+--ok-bg: #173a28;
+--wait: #9aa79d;
+--wait-bg: #2a332d;
+--unpub: #eebd62;
+--unpub-bg: #3a2f14;
+--check: #8fb8dd;
+--check-bg: #1d2c3d;
+--shadow: 0 1px 2px rgba(0,0,0,.35), 0 6px 18px rgba(0,0,0,.3);
+}
+}
+* { box-sizing: border-box;}
+html { scroll-behavior: smooth;}
+@media (prefers-reduced-motion: reduce) {
+html { scroll-behavior: auto;}
+* { animation: none!important; transition: none!important;}
+}
+body {
+margin: 0;
+background: var(--bg);
+color: var(--ink);
+font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", system-ui, sans-serif;
+line-height: 1.65;
+-webkit-font-smoothing: antialiased;
+}
+a { color: var(--brand);}
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px;}
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px;}
+
+/* ---------- Hero ---------- */
+.hero {
+background: var(--brand-strong);
+color: #fff;
+padding: 30px 0 26px;
+position: relative;
+overflow: hidden;
+}
+.hero::after {
+content: "";
+position: absolute; inset: 0;
+background:
+repeating-linear-gradient(90deg, transparent 0 118px, rgba(255,255,255,.05) 118px 120px);
+pointer-events: none;
+}
+.hero.wrap { position: relative; z-index: 1;}
+.hero.year-tag {
+display: inline-block; font-size:.8rem; font-weight: 900; letter-spacing:.05em;
+background: var(--accent); color: #23180a;
+border-radius: 999px; padding: 3px 12px; margin-bottom: 10px;
+}
+.hero h1 {
+margin: 0 0 8px;
+font-size: clamp(1.45rem, 4.6vw, 2.15rem);
+font-weight: 900;
+letter-spacing:.01em;
+line-height: 1.35;
+}
+.hero h1.accent { color: var(--accent);}
+.hero p.lead { margin: 0 0 10px; font-size:.95rem; color: rgba(255,255,255,.92); max-width: 44em;}
+.hero p.sub { margin: 0 0 18px; font-size:.85rem; color: rgba(255,255,255,.78); max-width: 44em;}
+.hero-stats { display: flex; flex-wrap: wrap; gap: 8px;}
+.hero-stat {
+display: inline-flex; align-items: center; gap: 7px;
+background: rgba(255,255,255,.12);
+border: 1px solid rgba(255,255,255,.22);
+border-radius: 999px; padding: 6px 14px;
+font-size:.85rem; font-weight: 500;
+}
+.hero-stat b { font-size: 1.05rem; font-weight: 900;}
+.dot { width: 9px; height: 9px; border-radius: 50%; flex: none;}
+.dot.ok { background: #58d68d;}
+.dot.wait { background: #c8cfc9;}
+
+/* ---------- Controls ---------- */
+.controls {
+position: sticky; top: 0; z-index: 40;
+background: var(--bg);
+border-bottom: 1px solid var(--line);
+padding: 12px 0 10px;
+}
+.controls-grid { display: grid; gap: 10px;}
+@media (min-width: 760px) {
+.controls-grid { grid-template-columns: 1fr 1fr auto; align-items: end;}
+}
+.field label { display: block; font-size:.78rem; font-weight: 700; color: var(--ink-2); margin-bottom: 4px;}
+.field select,.field input[type="search"] {
+width: 100%; min-height: 48px;
+padding: 10px 14px;
+font: inherit; font-size: 1rem;
+color: var(--ink);
+background: var(--surface);
+border: 1.5px solid var(--line);
+border-radius: 10px;
+appearance: none;
+}
+.field select {
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%234c5a52' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
+background-repeat: no-repeat;
+background-position: right 14px center;
+padding-right: 40px;
+}
+.field select:focus,.field input[type="search"]:focus { border-color: var(--brand); outline: none; box-shadow: 0 0 0 3px var(--brand-soft);}
+.status-chips { display: flex; gap: 8px;}
+.chip {
+flex: 1; min-height: 48px;
+padding: 8px 10px;
+font: inherit; font-size:.9rem; font-weight: 700;
+color: var(--ink-2);
+background: var(--surface);
+border: 1.5px solid var(--line);
+border-radius: 10px;
+cursor: pointer;
+white-space: nowrap;
+}
+.chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff;}
+@media (prefers-color-scheme: dark) {
+.chip[aria-pressed="true"] { color: #0c1512;}
+}
+
+/* ---------- Block tabs ---------- */
+.tabs { padding: 16px 0 4px;}
+.tabs-list {
+display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+list-style: none; margin: 0; padding: 0;
+}
+@media (min-width: 760px) {.tabs-list { grid-template-columns: repeat(10, 1fr);}}
+.tab-btn {
+width: 100%; min-height: 52px;
+display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;
+padding: 6px 2px;
+font: inherit; font-size:.92rem; font-weight: 700;
+color: var(--ink);
+background: var(--surface);
+border: 1.5px solid var(--line);
+border-top: 4px solid var(--tab-accent, var(--line));
+border-radius: 10px;
+cursor: pointer;
+}
+.tab-btn small { font-size:.68rem; font-weight: 500; color: var(--ink-3);}
+.tab-btn[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff;}
+.tab-btn[aria-pressed="true"] small { color: rgba(255,255,255,.75);}
+@media (prefers-color-scheme: dark) {
+.tab-btn[aria-pressed="true"] { color: #0c1512;}
+.tab-btn[aria-pressed="true"] small { color: rgba(12,21,18,.7);}
+}
+
+.result-line { margin: 14px 2px 0; font-size:.88rem; color: var(--ink-2); min-height: 1.4em;}
+
+/* ---------- Block sections ---------- */
+main { padding-bottom: 8px;}
+.block { padding: 26px 0 6px; scroll-margin-top: 150px;}
+.block-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px;}
+.block-head h2 {
+margin: 0; font-size: 1.5rem; font-weight: 900;
+display: flex; align-items: center; gap: 10px;
+}
+.block-head h2::before {
+content: ""; width: 12px; height: 26px; border-radius: 3px;
+background: var(--block-accent, var(--brand)); flex: none;
+}
+.block-head.count { font-size:.85rem; color: var(--ink-2);}
+
+/* Block qualifier banner */
+.qualifier {
+background: var(--brand-soft);
+border: 1.5px solid var(--brand);
+border-radius: var(--radius);
+padding: 18px;
+margin-bottom: 16px;
+box-shadow: var(--shadow);
+}
+.qualifier.q-label {
+display: inline-block; font-size:.75rem; font-weight: 900; letter-spacing:.06em;
+color: var(--brand-strong); background: var(--surface);
+border: 1px solid var(--brand);
+padding: 2px 10px; border-radius: 999px; margin-bottom: 8px;
+}
+.qualifier h3 { margin: 0 0 6px; font-size: 1.12rem; font-weight: 900; line-height: 1.5;}
+.qualifier.q-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; flex-wrap: wrap;}
+
+/* Prefecture cards */
+.cards { display: grid; gap: 12px; grid-template-columns: 1fr; list-style: none; margin: 0; padding: 0;}
+@media (min-width: 620px) {.cards { grid-template-columns: repeat(2, 1fr);}}
+@media (min-width: 980px) {.cards { grid-template-columns: repeat(3, 1fr);}}
+.card {
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+padding: 16px;
+box-shadow: var(--shadow);
+display: flex; flex-direction: column; gap: 8px;
+scroll-margin-top: 160px;
+}
+.card.flash { animation: flash 1.6s ease;}
+@keyframes flash {
+0%, 60% { box-shadow: 0 0 0 4px var(--accent), var(--shadow);}
+100% { box-shadow: var(--shadow);}
+}
+.card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px;}
+.pref-name { font-size: 1.3rem; font-weight: 900; margin: 0;}
+.badge {
+flex: none; display: inline-flex; align-items: center; gap: 6px;
+font-size:.78rem; font-weight: 700;
+padding: 4px 11px; border-radius: 999px;
+}
+.badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor;}
+.badge.ok { color: var(--ok); background: var(--ok-bg);}
+.badge.wait { color: var(--wait); background: var(--wait-bg);}
+.badge.unpub { color: var(--unpub); background: var(--unpub-bg);}
+.badge.check { color: var(--check); background: var(--check-bg);}
+.tournament { margin: 0; font-size:.92rem; font-weight: 500; line-height: 1.55;}
+.evidence {
+margin: 0; font-size:.82rem; line-height: 1.6; color: var(--ink-2);
+background: var(--surface-2); border-radius: 8px; padding: 8px 10px;
+}
+.evidence b { color: var(--ink);}
+.qualifier.evidence { background: var(--surface); margin-bottom: 12px;}
+.card-note { margin: 0; font-size:.82rem; line-height: 1.6; color: var(--ink-2);}
+.links { display: grid; gap: 8px; margin-top: auto;}
+
+.btn {
+display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+min-height: 48px; width: 100%;
+padding: 10px 16px;
+font: inherit; font-size:.95rem; font-weight: 700; line-height: 1.4; text-align: center;
+color: #fff; background: var(--brand);
+border: none; border-radius: 10px;
+text-decoration: none; cursor: pointer;
+}
+.btn:hover { background: var(--brand-strong);}
+@media (prefers-color-scheme: dark) {.btn { color: #0c1512;}.btn:hover { color: #0c1512;}}
+.btn.secondary {
+background: var(--surface); color: var(--brand);
+border: 1.5px solid var(--brand);
+}
+.btn.secondary:hover { background: var(--brand-soft);}
+@media (prefers-color-scheme: dark) {.btn.secondary { color: var(--brand-strong);}}
+.btn.disabled {
+background: var(--wait-bg); color: var(--wait);
+cursor: not-allowed; pointer-events: none;
+}
+.qualifier.links { max-width: 560px;}
+.btn.kind {
+flex: none;
+font-size:.72rem; font-weight: 900; letter-spacing:.04em;
+background: rgba(255,255,255,.25); border-radius: 5px; padding: 1px 7px;
+}
+.btn.secondary.kind { background: var(--brand-soft);}
+@media (prefers-color-scheme: dark) {.btn.kind { background: rgba(12,21,18,.18);}.btn.secondary.kind { background: var(--brand-soft);}}
+.btn svg { flex: none;}
+
+.empty {
+display: none;
+text-align: center; padding: 44px 16px;
+color: var(--ink-2); background: var(--surface);
+border: 1px dashed var(--line); border-radius: var(--radius);
+margin: 18px 0 8px;
+}
+.empty.show { display: block;}
+.empty p { margin: 0 0 14px;}
+.empty button {
+min-height: 48px; padding: 10px 22px;
+font: inherit; font-weight: 700;
+color: var(--brand); background: var(--surface);
+border: 1.5px solid var(--brand); border-radius: 10px; cursor: pointer;
+}
+
+
+.promo-band { background: var(--accent); color: #23180a; padding: 18px 0; }
+.promo-inner { display: flex; align-items: center; gap: 14px 22px; flex-wrap: wrap; }
+.promo-text { flex: 1 1 320px; min-width: min(320px, 100%); }
+.promo-title { margin: 0 0 2px; font-size: 1.12rem; font-weight: 900; line-height: 1.5; }
+.promo-desc { margin: 0; font-size: .88rem; line-height: 1.6; color: rgba(35,24,10,.85); }
+.promo-btn { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 12px 26px; font-size: 1rem; font-weight: 900; color: #fff; background: var(--brand-strong); border-radius: 10px; text-decoration: none; box-shadow: 0 4px 14px rgba(35,24,10,.25); }
+.promo-btn:hover { background: #073f2b; }
+.promo-bottom { padding: 6px 0 4px; }
+.promo-card { background: var(--brand-soft); border: 2px solid var(--brand); border-radius: var(--radius); padding: 20px; display: flex; align-items: center; gap: 14px 22px; flex-wrap: wrap; box-shadow: var(--shadow); }
+.promo-card .promo-desc { color: var(--ink-2); }
+.promo-card .promo-btn { background: var(--brand); box-shadow: none; }
+.promo-card .promo-btn:hover { background: var(--brand-strong); }
+@media (prefers-color-scheme: dark) { .promo-card .promo-btn { color: #0c1512; } .promo-card .promo-btn:hover { color: #0c1512; } }
+
+/* ---------- Status legend ---------- */
+.status-legend { padding: 20px 0 4px; }
+.status-legend h2 { font-size: 1.1rem; font-weight: 900; margin: 0 0 12px; }
+.legend-grid { display: grid; gap: 10px; grid-template-columns: 1fr; list-style: none; margin: 0; padding: 0; }
+@media (min-width: 620px) { .legend-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .legend-grid { grid-template-columns: repeat(4, 1fr); } }
+.legend-item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow); }
+.legend-item p { margin: 8px 0 0; font-size: .88rem; line-height: 1.6; color: var(--ink-2); }
+
+/* ---------- Notes / footer ---------- */
+.notes { padding: 34px 0 10px;}
+.notes h2 { font-size: 1.25rem; font-weight: 900; margin: 0 0 14px;}
+.notes-grid { display: grid; gap: 12px;}
+@media (min-width: 760px) {.notes-grid { grid-template-columns: 1fr 1fr;}}
+.note {
+background: var(--surface); border: 1px solid var(--line);
+border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+}
+.note h3 { margin: 0 0 10px; font-size: 1rem; font-weight: 900; display: flex; align-items: center; gap: 8px;}
+.note ul { margin: 0; padding-left: 1.25em; font-size:.9rem; color: var(--ink-2);}
+.note li { margin-bottom: 6px;}
+.note li b { color: var(--ink);}
+.note p { margin: 0 0 8px; font-size:.9rem; color: var(--ink-2);}
+footer { border-top: 1px solid var(--line); margin-top: 26px; padding: 20px 0 34px; font-size:.83rem; color: var(--ink-3);}
+footer p { margin: 0 0 6px;}
+[hidden] { display: none!important;}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="wrap">
+<span class="year-tag">2026年4月以降実施 ・ 全小予選のみ</span>
+<h1>全国小学生バドミントン<br /><span class="accent">全小予選結果</span>リンクポータル</h1>
+<p class="lead">第35回全国小学生バドミントン選手権大会（2026年12月23日〜27日、茨城県水戸市・アダストリアみとアリーナ）に向けた、都道府県予選・地方ブロック予選の結果リンク集です。対象は2026年4月以降に実施された全小予選のみです。</p>
+<p class="sub">このページは「全小予選」専用です。全国小学生ABCバドミントン大会（ABC大会）は別の大会のため、その予選結果は含んでいません。2026年11月1日に47都道府県と9ブロックを調査し、再調査では各連盟の大会情報一覧・年度別アーカイブから結果PDFやDriveリンクまで辿りました。結果ページや結果PDFを実際に開いて2026年の全小予選であることを確認できたものだけを「確認済み」とし、開催は確認できたが結果のないものは「結果未掲載」、開催情報自体が見つからないものは「情報未発見」、予選と確定できないものは「要確認」と4段階で表示しています。</p>
+<div class="hero-stats" aria-label="掲載状況の概要">
+<span class="hero-stat">調査日 <b>2026年11月1日</b></span>
+<span class="hero-stat"><span class="dot ok" aria-hidden="true"></span>確認済みカード／バナー <b id="stat-published">–</b> 件</span>
+<span class="hero-stat"><span class="dot wait" aria-hidden="true"></span>結果未掲載・情報未発見・要確認のカード／バナー <b id="stat-other">–</b> 件</span>
+</div>
+</div>
+</header>
+
+<section class="promo-band" aria-label="SmashStats（Androidアプリ）の紹介">
+<div class="wrap promo-inner">
+<div class="promo-text">
+<p class="promo-title">試合の記録・分析は SmashStats（Androidアプリ）で</p>
+<p class="promo-desc">ジュニアのラケットスポーツの試合記録アプリ。対戦相手のメモや戦績の振り返りに。</p>
+</div>
+<a class="promo-btn" href="https://play.google.com/store/apps/details?id=com.aistudio.smashstats.vptzqy" target="_blank" rel="noopener">Google Playで見る</a>
+</div>
+</section>
+
+<section class="status-legend wrap" aria-labelledby="legend-title">
+<h2 id="legend-title">ステータスの見方（4段階）</h2>
+<ul class="legend-grid">
+<li class="legend-item"><span class="badge ok">確認済み</span><p>結果ページまたは結果PDFを開いて内容を確認済み</p></li>
+<li class="legend-item"><span class="badge unpub">結果未掲載</span><p>大会開催は確認できたが、結果は未発見</p></li>
+<li class="legend-item"><span class="badge wait">情報未発見</span><p>予選開催情報自体が見つからない</p></li>
+<li class="legend-item"><span class="badge check">要確認</span><p>情報はあるが、第35回全小の予選であることを確定できない</p></li>
+</ul>
+</section>
+
+<div class="controls">
+<div class="wrap controls-grid">
+<div class="field">
+<label for="pref-select">都道府県クイック選択</label>
+<select id="pref-select">
+<option value="">都道府県を選んでください</option>
+</select>
+</div>
+<div class="field">
+<label for="search">キーワード検索</label>
+<input type="search" id="search" placeholder="例：滋賀、関東、北信越…" autocomplete="off" />
+</div>
+<div class="field">
+<label id="status-label">ステータスで絞り込み</label>
+<div class="status-chips" role="group" aria-labelledby="status-label">
+<button type="button" class="chip" data-status="all" aria-pressed="true">すべて</button>
+<button type="button" class="chip" data-status="published" aria-pressed="false">確認済みのみ</button>
+<button type="button" class="chip" data-status="other" aria-pressed="false">未確認など</button>
+</div>
+</div>
+</div>
+</div>
+
+<nav class="tabs wrap" aria-label="地方ブロックで切り替え">
+<ul class="tabs-list" id="tabs-list"></ul>
+</nav>
+
+<div class="wrap">
+<p class="result-line" id="result-line" role="status" aria-live="polite"></p>
+</div>
+
+<main class="wrap" id="main">
+<div class="empty" id="empty">
+<p>条件に合う結果が見つかりませんでした。<br />検索キーワードや絞り込みを変えてお試しください。</p>
+<button type="button" id="reset-btn">絞り込みをリセット</button>
+</div>
+</main>
+
+<section class="notes wrap" aria-labelledby="notes-title">
+<h2 id="notes-title">調査について（方法・注記・未確認事項）</h2>
+<div class="notes-grid">
+<div class="note">
+<h3>調査方法と「確認済み」の基準</h3>
+<ul>
+<li>調査日は<b>2026年11月1日</b>。日本小学生バドミントン連盟、各都道府県の小学生連盟／バドミントン協会の公式サイトを起点に、実際にページを開いて確認しました。再調査では、トップのお知らせだけでなく<b>大会情報一覧・カテゴリ別一覧・年度別アーカイブ</b>まで開き、結果PDFやGoogle Driveリンクのファイル名・内容まで辿っています。</li>
+<li><b>対象は第35回全国小学生バドミントン選手権大会（全小）の予選だけ</b>で、<b>2026年4月以降に実施</b>された分に限ります。全国小学生ABCバドミントン大会（ABC大会）、若葉カップ、チャレンジ大会、新人戦は対象外で、同じ一覧ページに載っていても採用していません。2025年度以前の結果も採用していません。</li>
+<li>ステータスは4段階です。<b>確認済み</b>＝結果ページまたは結果PDFを開いて内容を確認済み／<b>結果未掲載</b>＝大会の開催は確認できたが結果は未発見／<b>情報未発見</b>＝予選開催情報自体が見つからない／<b>要確認</b>＝情報はあるが第35回全小の予選と確定できない、または結果そのものを開いて確認できていない。</li>
+<li><b>「確認済み」の検証基準</b>：検索結果にURLが存在するだけでは「確認済み」としません。実際にリンク先を開き、（1）ページが正常に閲覧できる、（2）2026年度の大会情報である、（3）第35回全小の予選・選考会に関連する、（4）結果・順位・代表者・トーナメント結果のいずれかが確認できる、（5）リンク先が大会結果そのものか、結果を掲載しているページに直接到達できる、の5点をすべて満たしたものだけを「確認済み」としています。PDFも可能な限り開いて内容を確認しています。2026年11月1日の再検証では、福島県（告知記事が案内する「小学生連盟」ページから結果PDFを開き、7ページの優勝〜三位表を確認）と山梨県（詳細記事内の「大会結果」「入賞者」PDFを開き、トーナメント表と入賞者表を確認）を「確認済み」に引き上げました。一方、検索索引での確認に留まり結果そのものを開けていない岐阜県は「要確認」のままです。</li>
+<li><b>集計（2026年11月1日時点）</b>：都道府県は47地域中<b>26地域</b>で結果を確認済み（このほか北海道は都道府県予選を行わずブロック大会が予選を兼ね、その結果も確認済み）。ブロックは9地域中<b>6地域</b>（北海道・関東・北信越・近畿・中国・四国）で確認済み。要確認は4地域（長野・岐阜・三重・大阪）、結果未掲載は都道府県4地域（群馬・新潟・京都・福岡）とブロック3地域（東北・東海・九州）、情報未発見は都道府県13地域です。</li>
+<li>全小の個人戦出場はブロック予選で決まる構造のため、都道府県予選の多くは「ブロック大会の県予選」という名称で実施されています。大会名はページに書かれた正式名称をそのまま記載しています。</li>
+<li>日本小学生バドミントン連盟の<a href="https://www.syoubad.jp/taikai/zensyou/zensyou35/index.html" target="_blank" rel="noopener">第35回大会ページ</a>は、2026年11月1日時点では要項等の大会資料のみで、ブロック予選結果の集約掲載はまだありませんでした（前年は11月上旬に掲載）。そのためブロック結果は各ブロック・県連盟サイトで拾っています。</li>
+</ul>
+</div>
+<div class="note">
+<h3>確認方法の注記（未解決のまま明示）</h3>
+<ul>
+<li><b>徳島県</b>の結果はExcelファイル（.xlsx）形式です。2026年11月1日に実際にファイルを開き、全12シート（6年生以下・5年生以下・4年生以下の男女シングルス／ダブルス）に各種目の対戦結果・スコアと三位決定戦が収録されていることを確認したため、「確認済み」としています。</li>
+<li><b>岐阜県</b>は県協会・県小学生連盟の両サイトとも取得時にネットワークエラーとなり、公式サイトの検索索引（結果掲載の告知＋大会情報の結果リンク）での確認に留まります。2026年11月1日にアクセス再試行と追加検索を行いましたが公式の結果PDFには到達できず、結果そのものを開けていないため「要確認」のままです。</li>
+<li><b>福島県</b>は、結果掲載の告知記事が案内する県協会「小学生連盟」ページから結果PDFを開き、表紙の大会名・日付（2026/08/29）・会場と各種目の優勝〜三位表を確認しました。<b>山梨県</b>は、詳細記事内の「大会結果」PDF（トーナメント表）と「入賞者」PDF（2026.08.30、小瀬スポーツ公園体育館、優勝〜四位）を開いて確認しました。いずれも2026年11月1日の再検証で「確認済み」に引き上げています。</li>
+<li><b>四国ブロック</b>の結果PDFは保存フォルダ名に「2025」とありますが、内容・文脈は2026年第35回大会のものです。</li>
+<li><b>大阪府</b>は連盟サイトの更新告知で「全小予選の結果等を掲載」とあるものの掲載ページを特定できていないため要確認です。<b>長野県</b>の8月30日の県選手権が北信越選考を兼ねるか、<b>三重県</b>の「団体戦兼東海予選」の位置づけも確定できず要確認としています。</li>
+<li>日本小学生連盟サイトに残る近畿・四国の成績表ファイルは第34回・第32回など過去年度のもので、2026年度分としては採用していません。</li>
+<li><b>東北・東海・九州ブロック</b>は開催自体は確認済みですが、調査時点で公式結果が未掲載です。九州ブロックは調査日（11月1日）が大会最終日でした。</li>
+<li>「情報未発見」とした地域は、本調査で用いた検索・連盟リンクの範囲で公式結果に到達できなかったという意味であり、<b>予選が開催されていないことやサイトの不存在を断定するものではありません</b>。</li>
+</ul>
+</div>
+<div class="note">
+<h3>関連URL（結果ページ以外に発見したもの）</h3>
+<ul>
+<li>関東ブロック <a href="https://birdgunmael.com/wp-content/uploads/2026/09/13-meibo0924.pdf" target="_blank" rel="noopener">参加者名簿PDF</a>（群馬県小学生連盟、2026年9月24日版・出場者一覧）</li>
+<li>岩手県予選の<a href="https://badminton-iwate.net/2026/08/11/5310/" target="_blank" rel="noopener">告知記事</a>（結果PDFへのリンク元）</li>
+<li>新潟県 <a href="http://www.agano.net/njba/renmei/2026/R8gyouji-yotei2.pdf" target="_blank" rel="noopener">令和8年度行事予定PDF</a>（県予選日程の公式根拠）</li>
+<li>福岡県 <a href="https://www.u-zak.ne.jp/FBA-P/tour/2026/2026_tournament_v1.pdf" target="_blank" rel="noopener">令和8年度大会日程PDF</a>（県予選・九州大会の日程根拠）</li>
+<li>京都府 <a href="https://www.syoubad.jp/sosiki/huken/kinki/kyouto.html" target="_blank" rel="noopener">令和8年度スケジュール</a>／大阪府 <a href="https://www.syoubad.jp/sosiki/huken/kinki/oosaka.html" target="_blank" rel="noopener">令和8年度スケジュール</a>（日本小学生連盟の都道府県ページ、全小予選会の日程）</li>
+<li>福島県予選の開催確認（<a href="https://www.city.soma.fukushima.jp/shiseijoho/kohokocho/topics/2026/9gatu/20870.html" target="_blank" rel="noopener">相馬市公式ページ</a>、東北大会への出場枠の説明あり）</li>
+<li>島根県協会トップの<a href="https://www.shimane-bad.jp/" target="_blank" rel="noopener">中国大会での県勢入賞報告</a>（2026年10月16日付・代表者決定情報）</li>
+<li>第35回本大会の<a href="https://www.sposoku.com/syogakusei-badminton/" target="_blank" rel="noopener">速報まとめ</a>（出場県の逆引き用。予選結果そのものではない）</li>
+</ul>
+</div>
+<div class="note">
+<h3>未発見地域の追加調査の記録</h3>
+<p>結果が見つからなかった地域では、県名を差し替えて「＜県名＞ 全国小学生バドミントン選手権大会予選 結果」「＜県名＞ 全小予選 バドミントン 2026」「＜県名＞ 小学生バドミントン 大会結果 令和8年」「第35回 全国小学生バドミントン選手権大会 県予選 結果」「2026 全小 予選 結果 ＜県名＞」「＜ブロック大会名＞ ＜県名＞予選 結果 2026」などを検索し、各県協会／小学生連盟の大会情報一覧・年度別アーカイブを直接確認しました。それでも見つからなかった主な理由と、次の調査先は次のとおりです（理由は推定を含む）。</p>
+<ul>
+<li><b>青森・秋田</b>：公式・索引とも未発見（推定：結果はWeb未掲載かクラブSNSのみ）。次は県小学生連盟の有無の確認、東北大会の出場者名簿からの逆引き、主要クラブのSNS。</li>
+<li><b>富山・福井</b>：富山は大会名から選考会と断定できず、福井は開催地情報のみ（推定：結果は連盟の紙面・SNSのみ）。次は各県小学生連盟と北信越大会のプログラム（出場者名簿）。</li>
+<li><b>奈良・和歌山</b>：奈良は県協会に小学生部門の記事がなく、和歌山は前年度分のみ（推定：小学生部門は別連盟が管理）。次は各県小学生連盟と近畿大会の出場者名簿。</li>
+<li><b>鳥取・島根・岡山・山口</b>：鳥取はブロック大会の結果は公開済みだが県予選は別カテゴリの可能性。岡山はABC関連のみ（推定：県連盟サイトが検索に弱い）。次は県協会の小学生カテゴリ精査と主要クラブの発信。</li>
+<li><b>香川・高知</b>：香川は過去年度の四国予選結果のみ、高知は県協会に小学生部門の掲載なし。次は各県小学生連盟と四国大会の出場者名簿。</li>
+<li><b>長崎・宮崎（県予選）</b>：長崎は九州大会の開催情報が中心で県選考会の結果は未掲載。宮崎は県代表選考会の結果は確認済みだが個人戦の県予選結果は未発見。次は県協会の結果ページと大会後の更新。</li>
+<li><b>東北ブロック</b>：開催県・岩手県協会の特設ページに結果投稿がまだない（推定：大会後の投稿待ち）。<b>東海ブロック</b>：主催者発表が未公開。次は静岡県小学生連盟と名古屋バドミントン速報の2026年版。<b>九州ブロック</b>：調査時点で結果公開前。次は長崎県協会の結果投稿（大会翌週）。</li>
+</ul>
+</div>
+</div>
+</section>
+
+
+<section class="promo-bottom wrap" aria-label="SmashStats（Androidアプリ）の紹介">
+<div class="promo-card">
+<div class="promo-text">
+<p class="promo-title">試合の記録・分析は SmashStats（Androidアプリ）で</p>
+<p class="promo-desc">ジュニアのラケットスポーツの試合記録アプリ。対戦相手のメモや戦績の振り返りに。予選の結果とあわせて、試合の記録も残しておけます。</p>
+</div>
+<a class="promo-btn" href="https://play.google.com/store/apps/details?id=com.aistudio.smashstats.vptzqy" target="_blank" rel="noopener">Google Playで見る</a>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<p>全小予選結果ポータル — 第35回全国小学生バドミントン選手権大会の都道府県予選・地方ブロック予選（2026年4月以降実施分）の結果リンク集（2026年11月1日調査）</p>
+<p>結果の内容については、必ず各都道府県バドミントン協会・連盟の公式発表をご確認ください。リンク先はすべて各連盟・協会の公式ページ／公式速報ページです。</p>
+</div>
+</footer>
+
+<noscript><p style="padding:16px;text-align:center;">このページの絞り込み機能にはJavaScriptが必要です。</p></noscript>
+
+<script>
+/* ============================================================
+データ：2026年11月1日調査（再調査を含む）の結果を反映。対象は
+第35回全小の予選のみ（2026年4月以降実施分）。ABC大会の予選は含まない。
+status: "published"（確認済み：結果ページ／結果PDFを開いて確認済み）
+"unpublished"（結果未掲載：開催は確認できたが結果は未発見）
+"notfound"（情報未発見：予選開催情報自体が見つからない）
+"check"（要確認：情報はあるが第35回全小の予選と確定できない）
+links: 確認した結果URL（直接リンク優先）
+off: 結果がない場合の公式サイト等（次回調査の起点）
+============================================================ */
+var DATA = [
+{
+id: "hokkaido", name: "北海道", accent: "#3a7ca5",
+qualifier: {
+t: "なの花薬局カップ 第45回北海道小学生バドミントン大会",
+s: "published",
+e: "「(2026/08/29-30 北ガスアリーナ札幌46)」「結果速報」として種目別結果リンクを掲載（北海道協会の大会ページからリンクされる公式速報サイト）。北海道は単独ブロックで、これが全小予選を兼ねる。",
+links: [{ label: "ブロック予選の結果を見る", url: "http://badminton.weblike.jp/syougakusei/20260829_result.htm", type: "Web"}]
+},
+prefs: [
+{
+n: "北海道",
+t: "なの花薬局カップ 第45回北海道小学生バドミントン大会（全小予選を兼ねる）",
+s: "published",
+e: "「(2026/08/29-30 北ガスアリーナ札幌46)」「結果速報」として種目別結果リンクを掲載。北海道は都道府県単独の予選を行わず、この大会が全小予選を兼ねる。",
+note: "上の「地方ブロック予選」と同じ大会です。北海道は単独ブロックのため、ブロック予選＝県予選にあたります。",
+links: [{ label: "全小予選の結果を見る（ブロック予選と同じ）", url: "http://badminton.weblike.jp/syougakusei/20260829_result.htm", type: "Web"}]
+}
+]
+},
+{
+id: "tohoku", name: "東北", accent: "#4d9464",
+qualifier: {
+t: "第32回東北小学生バドミントン大会 兼 第35回全国小学生バドミントン選手権大会東北地区予選会",
+s: "unpublished",
+e: "2026年9月26〜27日、岩手県北上市で開催。開催県・岩手県協会の特設ページは9月9日付のタイムテーブル修正が最新で結果リンクはなく、宮城県連盟の大会一覧でも東北大会の結果欄は「-」。大会は開催済みだが、公式結果はまだ掲載されていない（結果未掲載）。",
+off: [{ label: "東北大会 特設ページ（岩手県協会）", url: "https://badminton-iwate.net/tohoku-junior-2026", type: "Web"}]
+},
+prefs: [
+{
+n: "青森県",
+t: "対象予選の2026年結果は未発見",
+s: "notfound",
+e: "県学年別大会兼東北予選に相当する大会の2026年結果は、公式サイト・検索索引のいずれでも確認できなかった（国スポ関連の情報が大半だった）。",
+off: [{ label: "青森県協会 公式サイト", url: "https://aobad.jp/", type: "Web"}]
+},
+{
+n: "岩手県",
+t: "第37回岩手県小学生バドミントン大会 兼 第32回東北小学生バドミントン大会岩手県予選会",
+s: "published",
+e: "結果PDF（トーナメント表）を直接開いて確認。2026年8月8・9日、北上市で開催。",
+links: [
+{ label: "県予選の結果PDF", url: "https://badminton-iwate.net/wp-content/uploads/2026/08/%E4%BB%A4%EF%BC%98%E6%9D%B1%E5%8C%97%E4%BA%88%E9%81%B8_%E7%B5%90%E6%9E%9C.pdf", type: "PDF"},
+{ label: "結果の告知記事（岩手県協会）", url: "https://badminton-iwate.net/2026/08/11/5310/", type: "Web"}
+]
+},
+{
+n: "宮城県",
+t: "第35回全国小学生バドミントン選手権大会宮城県予選会 兼 日本旅行杯第32回東北小学生選手権大会県予選会",
+s: "published",
+e: "入賞者表PDFを直接開いて確認。2026年8月22日、塩釜ガス体育館で開催。",
+links: [
+{ label: "県予選の入賞者表PDF", url: "https://miyagi-badminton.main.jp/data/2026/federation/shougaku_0822_1.pdf", type: "PDF"},
+{ label: "宮城県連盟 大会一覧", url: "https://miyagi-badminton.main.jp/federation_8.html", type: "Web"}
+]
+},
+{
+n: "秋田県",
+t: "対象予選の2026年結果は未発見",
+s: "notfound",
+e: "県予選の2026年結果は確認できなかった（見つかるのはABC県予選の報道のみで、ABC大会は対象外）。",
+off: [{ label: "秋田県 公式・大会情報", url: "https://www.akitasyobad.com/%E5%A4%A7%E4%BC%9A%E6%83%85%E5%A0%B1", type: "Web"}]
+},
+{
+n: "山形県",
+t: "第30回山形県小学生バドミントン学年別選手権大会 兼 第32回東北小学生バドミントン大会山形県予選会",
+s: "published",
+e: "入賞者PDFを直接開いて確認。2026年8月29日、つるしんアリーナ小真木原で開催。県協会の試合日程・結果ページにも結果・入賞者リンクがある。",
+links: [
+{ label: "県予選の入賞者PDF", url: "https://www.badminton-yamagata.net/app/download/18672160396/20260829%E5%85%A5%E8%B3%9E%E8%80%85.pdf?t=1787993123", type: "PDF"},
+{ label: "山形県協会 試合日程・結果", url: "https://www.badminton-yamagata.net/game/", type: "Web"}
+]
+},
+{
+n: "福島県",
+t: "第32回福島県小学生バドミントン選手権大会 兼 東北小学生バドミントン大会福島県予選大会",
+s: "published",
+e: "結果PDF（7ページ）を直接開いて中身を確認。表紙に大会名と「2026/08/29 猪苗代総合体育館カメリーナ」、各種目の優勝・準優勝・三位表を掲載。告知記事（2026年8月30日付）が案内する県協会「小学生連盟」ページに、結果PDFと結果速報HPへのリンクがある。2026年8月29日開催。",
+links: [
+{ label: "県予選の結果PDF", url: "https://fukubad.jp/wp-content/uploads/2026/08/43da4d3e1401c1b389b26a653705e431.pdf", type: "PDF"},
+{ label: "県予選の結果（速報HP）", url: "http://bad777.chips.jp/result/20260829ken/20260829index.htm", type: "Web"},
+{ label: "結果掲載の告知記事", url: "https://fukubad.jp/?p=26743", type: "Web"}
+]
+}
+]
+},
+{
+id: "kanto", name: "関東", accent: "#c2603e",
+qualifier: {
+t: "第21回関東小学生バドミントン選手権大会 兼 第35回全国小学生バドミントン選手権大会関東地区予選会",
+s: "published",
+e: "開催期間「10月17日(土)~10月18日(日)」ALSOKぐんまアリーナ、大会結果（全試合結果／ベスト8／入賞者）を掲載。関東連盟トップに「2026.10.21 第21回関東小学生バドミントン選手権大会 大会結果を更新しました」。",
+links: [{ label: "ブロック予選の結果を見る", url: "https://www.kantoebf.com/game/001940/", type: "Web"}]
+},
+prefs: [
+{
+n: "茨城県",
+t: "第35回全国小学生バドミントン選手権大会Panasonic茨城県予選会",
+s: "published",
+e: "PDF内に「第35回全国小学生バドミントン選手権大会Panasonic茨城県予選会」「2026/07/12 アダストリア水戸M」と全種目の結果を掲載。",
+links: [
+{ label: "全小 県予選の結果PDF", url: "https://ibasyoubadoren.sakura.ne.jp/images/taikai/R08/260712zensho_kekka.pdf", type: "PDF"}
+]
+},
+{
+n: "栃木県",
+t: "第44回 栃木県小学生バドミントン大会 兼 第22回 関東小学生バドミントン大会県予選",
+s: "published",
+e: "2026年アーカイブに「競技結果（2026/09/13）」のPDFリンクを掲載。",
+note: "大会名の「第22回 関東小学生バドミントン大会」は栃木県連盟の原表記ママ（2026年の関東ブロック大会は第21回で、回次表記は原表記のまま掲載している）。リンク先アーカイブには他の大会の結果も含まれますが、このカードの対象は全小の県予選（2026/09/13）のみです。",
+links: [{ label: "2026年 競技結果アーカイブ", url: "https://tochi-jr-bad.itigo.jp/?m=2026", type: "Web"}]
+},
+{
+n: "群馬県",
+t: "関東小学生選手権 兼 全国小学生バドミントン選手権群馬県予選",
+s: "unpublished",
+e: "県小学生連盟の新公式サイトの令和8年度予定で、2026年8月29日（太田市運動公園体育館）の開催を確認。結果記事はサイト内に見つからなかった（結果未掲載）。",
+off: [
+{ label: "群馬県小学生連盟 公式サイト", url: "https://birdgunmael.com/", type: "Web"},
+{ label: "令和8年度 予定", url: "https://birdgunmael.com/3448/", type: "Web"}
+]
+},
+{
+n: "埼玉県",
+t: "第43回埼玉県小学生バドミントン大会（第35回全国小学生バドミントン大会県予選会）",
+s: "published",
+e: "「開催日 令和8年8月22日（土）～23（日） 毎日興業アリーナ久喜」、大会結果（結果詳細／ベスト8）を掲載。県連盟トップに「2026-08-23 …大会結果を掲載いたしました」。",
+links: [
+{ label: "全小 県予選の結果", url: "https://saibad.net/syogaku/r8/zensyou/index.html", type: "Web"}
+]
+},
+{
+n: "千葉県",
+t: "第21回関東小学生バドミントン選手権大会 兼 第35回全国小学生バドミントン大会千葉県予選会",
+s: "published",
+e: "「(2026/08/29-30 野田市・関宿パークMOPS)」「結果速報」として種目別結果リンクを掲載。",
+links: [{ label: "県予選の結果を見る", url: "https://chibajuniorbad2021.com/wp-content/uploads/2026/08/20260830_result.htm", type: "Web"}]
+},
+{
+n: "東京都",
+t: "第21回関東小学生東京都予選会",
+s: "published",
+e: "結果PDF（全種目トーナメント）を確認。2026年9月5日（深川スポーツセンター）・9月12日（千代田区スポーツセンター）開催。都小学生連盟HPに「第21回関東予選競技上の結果を掲載しました」（2026/9/12）。",
+links: [
+{ label: "都予選の結果PDF", url: "https://bad-jr-tokyo.jp/wp-content/uploads/2026/09/2026kanto-yosen-result.pdf", type: "PDF"}
+],
+off: [{ label: "東京都小学生連盟 公式HP", url: "https://bad-jr-tokyo.jp/", type: "Web"}]
+},
+{
+n: "神奈川県",
+t: "関東小学生バドミントン選手権大会神奈川県予選会",
+s: "published",
+e: "県小学生連盟公式HPのNewsに「2026.08.12 シングルスの結果を掲載」「2026.08.29 ダブルス結果を掲載」。結果本体は同サイト「大会情報」内に掲載。2026年8月開催（単・複は別日程）。",
+links: [{ label: "県予選の結果（公式HP・大会情報）", url: "https://www.kanagawa-elementary-badminton.jp/", type: "Web"}],
+off: [{ label: "お知らせ一覧", url: "https://www.kanagawa-elementary-badminton.jp/info", type: "Web"}]
+},
+{
+n: "山梨県",
+t: "令和8年度山梨県小学生バドミントン大会 兼 全国小学生バドミントン大会関東地区予選会山梨県予選",
+s: "published",
+e: "詳細記事内の「大会結果」PDF（4ページ）と「入賞者」PDF（1ページ）を直接開いて中身を確認。入賞者表の見出しは「山梨県小学生バドミントン大会関東地区予選会山梨県予選」「2026.08.30 小瀬スポーツ公園体育館」で、各種目の優勝〜四位を掲載。大会結果PDFは各種目のトーナメント表（スコア・三位決定戦入り）。2026年8月30日開催（記事は2026年8月30日公開・9月6日更新）。",
+links: [
+{ label: "県予選の結果PDF（トーナメント表）", url: "https://00974340-970c-48ed-b77f-52c4ec35b32a.usrfiles.com/ugd/009743_7765c636d05d4acd9011341aa44cb83b.pdf", type: "PDF"},
+{ label: "県予選の入賞者PDF", url: "https://00974340-970c-48ed-b77f-52c4ec35b32a.usrfiles.com/ugd/009743_1075af0ca55849a3b83bc3cd0a1337f6.pdf", type: "PDF"},
+{ label: "県予選の詳細記事", url: "https://yamanashisbf.wixsite.com/estclub/post/%E3%80%908-6%E6%9B%B4%E6%96%B0%E3%80%91%E4%BB%A4%E5%92%8C%EF%BC%98%E5%B9%B4%E5%BA%A6%E5%B1%B1%E6%A2%A8%E7%9C%8C%E5%B0%8F%E5%AD%A6%E7%94%9F%E3%83%90%E3%83%89%E3%83%9F%E3%83%B3%E3%83%88%E3%83%B3%E5%A4%A7%E4%BC%9A%E5%85%BC%E5%85%A8%E5%9B%BD%E5%B0%8F%E5%AD%A6%E7%94%9F%E3%83%90%E3%83%89%E3%83%9F%E3%83%B3%E3%83%88%E3%83%B3%E5%A4%A7%E4%BC%9A%E9%96%A2%E6%9D%B1%E5%9C%B0%E5%8C%BA%E4%BA%88%E9%81%B8%E4%BC%9A%E5%B1%B1%E6%A2%A8%E7%9C%8C%E4%BA%88%E9%81%B8", type: "Web"}
+]
+}
+]
+},
+{
+id: "hokuriku", name: "北信越", accent: "#5b7fa6",
+qualifier: {
+t: "第32回北信越小学生バドミントン選手権大会",
+s: "published",
+e: "2026年10月10〜11日、福井県福井市。石川県ジュニア連盟ページの見出し「第35回全国小学生バドミントン選手権大会」「第32回北信越小学生バドミントン選手権大会 結果報告」。",
+links: [{ label: "ブロック予選の結果報告を見る", url: "https://shichuanxian.webnode.jp/%E5%8C%97%E4%BF%A1%E8%B6%8A%E4%BA%88%E9%81%B8/", type: "Web"}]
+},
+prefs: [
+{
+n: "新潟県",
+t: "第35回全国小学生選手権大会新潟県予選会（第32回北信越選手権大会県予選会）",
+s: "unpublished",
+e: "県連盟の行事予定で2026年8月29日（柏崎市総合体育館）の開催を確認。連盟公式ページの大会記録は令和7年度分までで、2026年の結果掲載は確認できなかった（結果未掲載）。",
+off: [
+{ label: "新潟県 公式サイト", url: "http://www.agano.net/njba/", type: "Web"},
+{ label: "R8行事予定表（PDF）", url: "http://www.agano.net/njba/renmei/2026/R8gyouji-yotei2.pdf", type: "PDF"}
+]
+},
+{
+n: "富山県",
+t: "対象予選の2026年結果は未発見",
+s: "notfound",
+e: "日本小学生連盟・富山県ページには8月30日の県小学生選手権大会（1部・上市町）の予定があるが、それが選考会かどうか確定できず、結果も未確認。本大会の団体戦には富山県が出場しており選考自体は行われているはずだが、公式結果は見つからなかった。"
+},
+{
+n: "石川県",
+t: "北信越小学生バドミントン選手権大会石川県予選会",
+s: "published",
+e: "ページ見出し「第35回全国小学生バドミントン選手権大会」「北信越小学生バドミントン選手権大会石川県予選会 結果報告 案内」「2026.9.12 大会結果報告」。同一ページに北信越ブロック決勝の結果報告も掲載。",
+links: [{ label: "県予選・北信越の結果報告", url: "https://shichuanxian.webnode.jp/%E5%8C%97%E4%BF%A1%E8%B6%8A%E4%BA%88%E9%81%B8/", type: "Web"}]
+},
+{
+n: "福井県",
+t: "対象予選の2026年結果は未発見",
+s: "notfound",
+e: "県予選の結果は確認できなかった。なお2026年の北信越ブロック大会は福井県（福井市総合体育館）で開催されている。"
+},
+{
+n: "長野県",
+t: "長野県小学生バドミントン選手権大会",
+s: "check",
+e: "県小学生連盟の令和8年度結果一覧に掲載（2026年8月30日、佐久市総合体育館）。結果ページ自体は確認できたが、大会名に「北信越予選／選考会」の明記がなく、第35回全小の予選と確定できないため「要確認」としている。",
+links: [{ label: "令和8（2026）年度 結果ページ", url: "https://nagano-jbad.com/result/2026-2/", type: "Web"}]
+}
+]
+},
+{
+id: "tokai", name: "東海", accent: "#b3812e",
+qualifier: {
+t: "第38回東海小学生バドミントン選手権大会（個人戦）",
+s: "unpublished",
+e: "2026年10月11日、北里アリーナ富士（静岡県富士市）で開催され、全小の東海予選を兼ねる。ただし大会情報の集約先では2026年10月29日時点で「結果は主催者の発表を待って載せます」のままで、公式結果は見つからなかった（結果未掲載）。2025年の第37回は結果掲載があった。"
+},
+prefs: [
+{
+n: "岐阜県",
+t: "第38回東海小学生バドミントン選手権大会（個人戦）岐阜県選考会",
+s: "check",
+e: "県協会の2026年度大会情報に結果リンクがあり、県小学生連盟サイトに「2026.8.30 選考会の結果を掲載しました」との記載があることは、公式サイトの検索索引で確認。2026年8月30日、山県市総合体育館で開催。",
+note: "県協会・県小学生連盟の両サイトとも直接取得時にネットワークエラーとなり、結果ページ／結果PDF自体を開いて内容を確認できていない。2026年11月1日に公式サイトへのアクセス再試行と追加検索も行ったが、公式の結果PDFには到達できなかった。検索結果にURLが存在するだけでは「確認済み」としない検証基準に照らし、「要確認」としている。県協会の大会情報ページを手がかりとして掲載。",
+links: [{ label: "県選考会の大会情報ページ（手がかり）", url: "http://www.gifu-badminton.com/tournament.html", type: "Web"}]
+},
+{
+n: "静岡県",
+t: "第38回全国小学生バドミントン選手権 静岡県予選（ページ表記ママ）",
+s: "published",
+e: "「2026年度」の部に「7/11 第38回全国小学生バドミントン選手権 静岡県予選 シングルス」「7/20 …ダブルス」の結果リンク（Googleドライブ）を掲載。",
+links: [{ label: "県予選の結果一覧（大会情報）", url: "https://sites.google.com/view/shizushou/%E5%A4%A7%E4%BC%9A%E6%83%85%E5%A0%B1", type: "Web"}]
+},
+{
+n: "愛知県",
+t: "全国小学生バドミントン選手権大会予選 個人戦（複・単）",
+s: "published",
+e: "県協会の大会情報一覧に掲載。複個人戦は2026年7月20日、単個人戦は2026年6月14日に大会結果が掲載された。",
+note: "大会名は県協会掲載の表記（回次含む）のまま記載している。",
+links: [
+{ label: "複個人戦の結果", url: "https://www.badminton-aichi.com/tournament/2026/07/30548/", type: "Web"},
+{ label: "単個人戦の結果", url: "https://www.badminton-aichi.com/tournament/2026/05/30273/", type: "Web"}
+]
+},
+{
+n: "三重県",
+t: "第41回三重県小学生バドミントン選手権大会（団体戦）兼東海予選",
+s: "check",
+e: "県協会の小学生カテゴリに「2026年の試合結果」として結果掲載があることを確認。ただし「団体戦兼東海予選」の位置づけ（個人戦選考との関係）が未確定のため「要確認」としている。",
+links: [{ label: "小学生カテゴリ（2026年の試合結果）", url: "https://www.mie-badminton.jp/tournament-category/elementary/", type: "Web"}]
+}
+]
+},
+{
+id: "kinki", name: "近畿", accent: "#8a5fa0",
+qualifier: {
+t: "第35回 全国小学生バドミントン大会 近畿ブロック予選会",
+s: "published",
+e: "滋賀県小学生連盟「県外大会情報」に「第35回 全国小学生バドミントン大会 近畿ブロック予選会 日時 令和8年10月25日 ◎大会結果」（結果はDriveリンク）。",
+note: "近畿小学生連盟サイトには第34回（2025年）の案内ページが残っており、2026年結果の直接PDFは特定できていない。結果は滋賀県連盟ページ経由で案内している。",
+links: [{ label: "ブロック予選の結果を見る（県外大会情報）", url: "https://sites.google.com/view/shigabad-shouren/%E7%9C%8C%E5%A4%96%E5%A4%A7%E4%BC%9A%E6%83%85%E5%A0%B1", type: "Web"}]
+},
+prefs: [
+{
+n: "滋賀県",
+t: "全小シングルス予選会／全小ダブルス予選会",
+s: "published",
+e: "「２０２６年度（案内・結果）」の部に「・8/30 全小ダブルス予選会（結果）」「・7/11 全小シングルス予選会（結果）」。結果本体は同ページ内のGoogle Driveリンク（速報.pdf。PDF内表記「2026/07/11 シングルス滋賀県予選会」、野洲市総合体育館）。",
+links: [
+{ label: "県予選の結果一覧（県内大会情報）", url: "https://sites.google.com/view/shigabad-shouren/%E7%9C%8C%E5%86%85%E5%A4%A7%E4%BC%9A%E6%83%85%E5%A0%B1", type: "Web"},
+{ label: "シングルス予選の結果PDF（速報）", url: "https://drive.google.com/file/d/1mL5KJJ1VBKtZ8xmhCsZ8UWNx06TX8ykw/view?usp=sharing", type: "PDF"}
+]
+},
+{
+n: "京都府",
+t: "「全小大会」府予選会",
+s: "unpublished",
+e: "日本小学生連盟・京都府ページの令和8年度スケジュールで、2026年7月25日・8月22日（三段池公園総合体育館）の開催を確認。結果の掲載は見つからなかった（結果未掲載）。府協会の年間計画には小学生予選の項目はない。",
+off: [{ label: "日本小学生連盟・京都府ページ", url: "https://www.syoubad.jp/sosiki/huken/kinki/kyouto.html", type: "Web"}]
+},
+{
+n: "大阪府",
+t: "全国小学生大会府予選会",
+s: "check",
+e: "2026年8月30日、東淀川体育館で開催（日本小学生連盟・大阪府ページの令和8年度スケジュールで確認）。府小学生連盟のGoogle Sitesに「09/14 全小予選の結果等を掲載しました」との更新告知があるが、掲載先のページを特定できていないため「要確認」としている。",
+off: [
+{ label: "大阪府小学生連盟 公式サイト", url: "https://sites.google.com/view/osakafushobad/", type: "Web"},
+{ label: "日本小学生連盟・大阪府ページ", url: "https://www.syoubad.jp/sosiki/huken/kinki/oosaka.html", type: "Web"}
+]
+},
+{
+n: "兵庫県",
+t: "第35回全国小学生バドミントン選手権大会兵庫県予選会",
+s: "published",
+e: "「第35回全国小学生バドミントン選手権大会兵庫県予選会 (2026/07/26 兵庫県立総合体育館)」「結果速報」として種目別結果リンクを掲載。",
+links: [{ label: "県予選の結果を見る", url: "https://hyogoshobad.main.jp/taikai/sokuhou_yosenkai_2026/20260726_result.htm", type: "Web"}]
+},
+{
+n: "奈良県",
+t: "対象予選の2026年結果は未発見",
+s: "notfound",
+e: "県協会サイトの2026年アーカイブに小学生予選の結果記事は見当たらなかった（中学校部門の結果のみ）。",
+off: [{ label: "奈良県協会 公式サイト", url: "https://www.narabad.com/", type: "Web"}]
+},
+{
+n: "和歌山県",
+t: "対象予選の2026年結果は未発見",
+s: "notfound",
+e: "確認できた結果PDFは第34回（2025年10月13日）の近畿ブロック予選のもので、前年度のため除外した。2026年の結果は見つからなかった。",
+off: [{ label: "和歌山県小学生連盟サイト", url: "https://wakayamashoubad.web.fc2.com/", type: "Web"}]
+}
+]
+},
+{
+id: "chugoku", name: "中国", accent: "#4f8f8a",
+qualifier: {
+t: "第43回中国地区小学生バドミントン選手権大会",
+s: "published",
+e: "2026年10月10〜11日、米子産業体育館（鳥取県）で開催。鳥取県協会「2026年度 中国大会情報」からリンクされた「ベスト8」入賞者一覧PDFを直接開いて確認。各種目上位3名が本大会へ出場する。",
+links: [
+{ label: "ブロック予選の結果PDF（ベスト8）", url: "http://tottori-ken-bad.sakura.ne.jp/wp/wp-content/uploads/2026/10/618d56a04315b9ccc46a36ba1e4b74fd.pdf", type: "PDF"},
+{ label: "2026年度 中国大会情報（鳥取県協会）", url: "https://tottori-ken-bad.sakura.ne.jp/wp/2026%E5%B9%B4%E5%BA%A6%E3%80%80%E4%B8%AD%E5%9B%BD%E5%A4%A7%E4%BC%9A%E6%83%85%E5%A0%B1/", type: "Web"}
+]
+},
+prefs: [
+{
+n: "鳥取県",
+t: "対象予選（県予選）の2026年結果は未発見",
+s: "notfound",
+e: "県予選の結果は確認できなかった。なお中国ブロック大会自体は鳥取県で開催され、県協会が結果PDFを公開している（上のブロック予選を参照）。",
+off: [{ label: "鳥取県協会・2026年度中国大会情報", url: "https://tottori-ken-bad.sakura.ne.jp/wp/2026%E5%B9%B4%E5%BA%A6%E3%80%80%E4%B8%AD%E5%9B%BD%E5%A4%A7%E4%BC%9A%E6%83%85%E5%A0%B1/", type: "Web"}]
+},
+{
+n: "島根県",
+t: "対象予選（県予選）の2026年結果は未発見",
+s: "notfound",
+e: "県予選自体の結果記事は確認できなかった。県協会HPは、中国ブロック大会での島根県選手の入賞を2026年10月16日付で報告している（関連情報）。",
+off: [{ label: "島根県協会 公式サイト", url: "https://www.shimane-bad.jp/", type: "Web"}]
+},
+{
+n: "岡山県",
+t: "中国地区小学生選手権大会県予選会（日本小学生連盟の岡山ページでは9月6日・笠岡）",
+s: "notfound",
+e: "県協会サイトに大会結果欄はあるが、当該県予選の2026年結果は確認できなかった（見つかるのはABC関連のみで、ABC大会は対象外）。",
+off: [{ label: "岡山県協会・組織ページ", url: "http://okayama-badminton.com/koenkai-soshiki/", type: "Web"}]
+},
+{
+n: "広島県",
+t: "第43回中国地区小学生バドミントン選手権大会広島県予選会",
+s: "published",
+e: "県小学生連盟「大会情報」に、要項・タイムテーブルと並んで「結果速報」リンクを掲載。2026年9月5日、こざかなくんスポーツパークびんごで開催。",
+links: [{ label: "県予選の結果速報（大会情報）", url: "https://hirosyoubad.jp/tournaments/", type: "Web"}]
+},
+{
+n: "山口県",
+t: "対象予選の2026年結果は未発見",
+s: "notfound",
+e: "県予選の2026年結果は確認できなかった。"
+}
+]
+},
+{
+id: "shikoku", name: "四国", accent: "#7d9b3a",
+qualifier: {
+t: "第35回全国小学生バドミントン選手権大会四国ブロック予選会",
+s: "published",
+e: "2026年10月3〜4日、愛媛県総合運動公園体育館で開催。開催県・愛媛県小学生連盟のページに、予選リーグ戦と決勝トーナメントの結果PDFが追加された（10月4日）。結果PDFの保存フォルダ名に「2025」とあるが、内容・文脈は2026年第35回大会のもの。",
+links: [
+{ label: "予選リーグ戦の結果PDF", url: "https://ehime.heteml.net/jr/2026/2025_sikokuburoku/Preliminary%20league%20results.pdf", type: "PDF"},
+{ label: "決勝トーナメントの結果PDF", url: "https://ehime.heteml.net/jr/2026/2025_sikokuburoku/Final%20Tournament%20Results.pdf", type: "PDF"}
+]
+},
+prefs: [
+{
+n: "徳島県",
+t: "第35回全国小学生バドミントン選手権大会 四国ブロック 徳島県予選",
+s: "published",
+e: "県小学生連盟の令和8年度大会ページの当該行に「■結果」リンクを掲載（トップのWhat's Newに「2026.09.09 県予選 結果掲載」）。2026年9月5日、北島町・北島総合体育館で開催。",
+note: "結果Excelファイル（.xlsx）を実際に開いて中身を確認済み。全12シート（6年生以下・5年生以下・4年生以下の男女シングルス／ダブルス）に、各種目の対戦結果とスコア、三位決定戦まで収録されている（2026年11月1日に再確認）。",
+links: [
+{ label: "県予選の結果（Excel）", url: "http://toksyoubad.web.fc2.com/2026/match2026/8ke.xlsx", type: "Excel"},
+{ label: "令和8年度 大会ページ", url: "http://toksyoubad.web.fc2.com/match.html", type: "Web"}
+]
+},
+{
+n: "香川県",
+t: "対象予選の2026年結果は未発見",
+s: "notfound",
+e: "県予選（四国ブロック予選の県予選）の2026年結果は確認できなかった。"
+},
+{
+n: "愛媛県",
+t: "第35回四国小学生バドミントン選手権大会愛媛県予選大会",
+s: "published",
+e: "結果PDF（各種目の最終順位付き）を直接開いて確認。2026年9月5日、新居浜市市民体育館で開催。県小学生連盟ページ（2026年10月31日更新）に結果追加の記録がある。",
+links: [
+{ label: "県予選の結果PDF", url: "https://ehime.heteml.net/jr/2026/2026_shikokublock%20kenyosen/26_sikokuburokukenyosen_result.pdf", type: "PDF"},
+{ label: "愛媛県小学生連盟ページ", url: "https://ehime.heteml.net/jr/index2010.htm", type: "Web"}
+]
+},
+{
+n: "高知県",
+t: "対象予選の2026年結果は未発見",
+s: "notfound",
+e: "県協会の試合結果カテゴリに小学生予選の掲載はなかった（一般・高校部門のみ）。"
+}
+]
+},
+{
+id: "kyushu", name: "九州", accent: "#c2496b",
+qualifier: {
+t: "第43回全九州小学生バドミントン選手権大会 兼 第35回全国小学生バドミントン選手権大会九州ブロック予選会",
+s: "unpublished",
+e: "2026年10月30日〜11月1日、大村市体育文化センター（長崎県）で開催。開催県・長崎県協会の掲載は10月24日時点で組合せ・事前連絡までで、調査日（11月1日）は大会最終日のため、結果はまだ掲載されていない（結果未掲載）。",
+off: [{ label: "開催地県・長崎県協会", url: "https://www.nagasaki-bad.com/", type: "Web"}]
+},
+prefs: [
+{
+n: "福岡県",
+t: "第34回福岡県小学生夏季大会 兼 第43回全九州小学生バドミントン大会福岡県予選会",
+s: "unpublished",
+e: "県協会の令和8年度大会日程で開催を確認（久留米アリーナ）。結果の掲載は見つからなかった（結果未掲載）。",
+off: [{ label: "令和8年度 大会日程PDF（福岡県協会）", url: "https://www.u-zak.ne.jp/FBA-P/tour/2026/2026_tournament_v1.pdf", type: "PDF"}]
+},
+{
+n: "佐賀県",
+t: "トス・ステージサービス杯 第43回全九州小学生選手権大会佐賀県選考会",
+s: "published",
+e: "結果PDF（シングルス）を直接開いて確認。2026年8月29日、唐津市文化体育館で開催。県協会の令和8年度大会情報（小学生部会）に結果リンクがある。",
+links: [
+{ label: "県選考会の結果PDF（シングルス）", url: "https://www.saga-bad.jp/cms/wp-content/uploads/2026/03/20260829s-001k.pdf", type: "PDF"},
+{ label: "令和8年度大会情報・小学生部会", url: "https://www.saga-bad.jp/tournament-eschool/7417.html", type: "Web"}
+]
+},
+{
+n: "長崎県",
+t: "対象予選（県選考会）の2026年結果は未発見",
+s: "notfound",
+e: "県協会サイトは九州ブロック大会の開催情報が中心で、県選考会（例年の形式はKTN杯県総合選手権大会・小学生の部 兼 全九州大会県代表選考会）の2026年結果は確認できなかった。",
+off: [{ label: "長崎県協会トップ", url: "https://www.nagasaki-bad.com/", type: "Web"}]
+},
+{
+n: "熊本県",
+t: "全九州小学生バドミントン選手権大会熊本県予選",
+s: "published",
+e: "県協会・小学校部会カテゴリに「令和8年度 全九州小学生バドミントン選手権大会熊本県予選開催要項 … 大会結果 入賞者一覧 2026.08.20」。",
+links: [{ label: "県予選の結果（小学校部会カテゴリ）", url: "https://kumamoto-bad-association.com/category/syougakou/", type: "Web"}]
+},
+{
+n: "大分県",
+t: "令和8年度 第43回全九州小学生バドミントン選手権大会 大分県予選会",
+s: "published",
+e: "結果PDF（順位表）を直接開いて確認。2026年8月29日、クラサス武道スポーツセンターで開催。",
+links: [
+{ label: "県予選の結果PDF", url: "https://oita-bad.org/archive/uploads/2026/09/2026_08_29_dai43kai_elementary_school_student_kenyosen_result.pdf", type: "PDF"},
+{ label: "結果の記事（大分県協会）", url: "https://oita-bad.org/archive/2026090312037.html", type: "Web"}
+]
+},
+{
+n: "宮崎県",
+t: "第35回全国小学生バドミントン選手権大会 都道府県対抗戦宮崎県代表候補者選考会",
+s: "published",
+e: "記事見出し「結果」、日付2026/09/21、結果PDFリンクあり。",
+note: "団体戦の県代表選考。同カテゴリに「第42回 宮崎県小学生バドミントン選手権大会」結果 2026/07/20 も掲載。",
+links: [{ label: "選考会の結果を見る", url: "https://miyazaki-badminton.com/post-13992/", type: "Web"}]
+},
+{
+n: "鹿児島県",
+t: "第42回鹿児島県小学生バドミントン大会（全九州小学生大会県予選会）",
+s: "published",
+e: "開催日は2026年8月22日（土）～23日（日）、会場は南栄リース桜島アリーナ。ページ内に大会結果へのリンクがあり、記事の更新日は2026-10-24。",
+links: [{ label: "県予選の結果を見る", url: "https://www.k-badminton.com/%E6%9C%AA%E5%88%86%E9%A1%9E/10856/", type: "Web"}]
+},
+{
+n: "沖縄県",
+t: "第46回新報児童オリンピック大会バドミントン競技（兼 第43回全九州小学生バドミントン選手権大会県予選）",
+s: "published",
+e: "県協会「大会情報」ページに「大会結果（7月7日更新）大会結果20260704」のリンクを確認。2026年7月4日開催。各種目4位以内が沖縄県代表として九州ブロック大会へ出場する。",
+links: [{ label: "県予選の結果（大会情報）", url: "https://okinawaken-badminton.com/user.php?CMD=101991400000121", type: "Web"}]
+}
+]
+}
+];
+
+/* ---------- helpers ---------- */
+var ICON_EXT = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>';
+var STATUS = {
+published: { label: "確認済み", cls: "ok"},
+unpublished: { label: "結果未掲載", cls: "unpub"},
+notfound: { label: "情報未発見", cls: "wait"},
+check: { label: "要確認", cls: "check"}
+};
+function badgeHTML(status) {
+var st = STATUS[status];
+return '<span class="badge ' + st.cls + '">' + st.label + '</span>';
+}
+function linkButtons(list, secondary) {
+if (!list ||!list.length) return "";
+var html = '<div class="links">';
+list.forEach(function (l) {
+html += '<a class="btn' + (secondary? " secondary": "") + '" href="' + l.url + '" target="_blank" rel="noopener">' +
+'<span class="kind">' + l.type + '</span>' + l.label + ICON_EXT + '</a>';
+});
+html += '</div>';
+return html;
+}
+function evidenceHTML(label, text) {
+return '<p class="evidence"><b>' + label + '：</b>' + text + '</p>';
+}
+
+/* ---------- render ---------- */
+var main = document.getElementById("main");
+var emptyEl = document.getElementById("empty");
+
+DATA.forEach(function (block) {
+var section = document.createElement("section");
+section.className = "block";
+section.id = "block-" + block.id;
+section.dataset.block = block.id;
+section.style.setProperty("--block-accent", block.accent);
+section.setAttribute("aria-labelledby", "h-" + block.id);
+
+var pubCount = block.prefs.filter(function (p) { return p.s === "published";}).length;
+var q = block.qualifier;
+
+var html = "";
+html += '<div class="block-head"><h2 id="h-' + block.id + '">' + block.name + 'ブロック</h2>' +
+'<span class="count">' + block.prefs.length + '都道府県 ・ 確認済み ' + pubCount + '件</span></div>';
+
+/* Block qualifier banner */
+var qSearch = block.name + " ブロック予選 " + q.t;
+html += '<article class="qualifier" data-cat="' + (q.s === "published"? "published": "other") + '" data-search="' + qSearch + '">' +
+'<div class="q-top"><span class="q-label">地方ブロック予選</span>' + badgeHTML(q.s) + '</div>' +
+'<h3>' + q.t + '</h3>' +
+evidenceHTML(q.s === "published"? "2026年の根拠": "状況（2026年11月1日調査）", q.e) +
+(q.note? '<p class="card-note">' + q.note + '</p>': "") +
+linkButtons(q.links, false) +
+linkButtons(q.off, true) +
+(q.links || q.off? "": '<span class="btn disabled" aria-disabled="true">公式の結果リンクは未確認です</span>') +
+'</article>';
+
+/* Prefecture cards */
+html += '<ul class="cards">';
+block.prefs.forEach(function (p) {
+html += '<li class="card" id="pref-' + block.id + "-" + p.n + '" data-cat="' + (p.s === "published"? "published": "other") + '" data-search="' + p.n + " " + p.t + '">' +
+'<div class="card-top"><h3 class="pref-name">' + p.n + '</h3>' + badgeHTML(p.s) + '</div>' +
+'<p class="tournament">' + p.t + '</p>' +
+evidenceHTML(p.s === "published"? "2026年の根拠": "状況（2026年11月1日調査）", p.e) +
+(p.note? '<p class="card-note">' + p.note + '</p>': "") +
+linkButtons(p.links, false) +
+linkButtons(p.off, true) +
+(!p.links &&!p.off? '<div class="links"><span class="btn disabled" aria-disabled="true">公式の結果リンクは未確認です</span></div>': "") +
+'</li>';
+});
+html += '</ul>';
+section.innerHTML = html;
+main.insertBefore(section, emptyEl);
+});
+
+/* ---------- tabs ---------- */
+var tabsList = document.getElementById("tabs-list");
+var tabDefs = [{ id: "all", name: "すべて", sub: "全国"}].concat(
+DATA.map(function (b) { return { id: b.id, name: b.name, sub: b.prefs.length + "件", accent: b.accent};})
+);
+tabDefs.forEach(function (t) {
+var li = document.createElement("li");
+var btn = document.createElement("button");
+btn.type = "button";
+btn.className = "tab-btn";
+btn.dataset.blockTab = t.id;
+btn.setAttribute("aria-pressed", t.id === "all"? "true": "false");
+if (t.accent) btn.style.setProperty("--tab-accent", t.accent);
+btn.innerHTML = t.name + "<small>" + t.sub + "</small>";
+btn.addEventListener("click", function () {
+state.block = t.id;
+syncTabs();
+applyFilters();
+if (t.id!== "all") {
+var sec = document.getElementById("block-" + t.id);
+if (sec) sec.scrollIntoView({ block: "start"});
+} else {
+window.scrollTo({ top: 0});
+}
+});
+li.appendChild(btn);
+tabsList.appendChild(li);
+});
+function syncTabs() {
+tabsList.querySelectorAll(".tab-btn").forEach(function (b) {
+b.setAttribute("aria-pressed", b.dataset.blockTab === state.block? "true": "false");
+});
+}
+
+/* ---------- prefecture quick select ---------- */
+var select = document.getElementById("pref-select");
+DATA.forEach(function (block) {
+var group = document.createElement("optgroup");
+group.label = block.name + "ブロック";
+block.prefs.forEach(function (p) {
+var opt = document.createElement("option");
+opt.value = block.id + "|" + p.n;
+opt.textContent = p.n;
+group.appendChild(opt);
+});
+select.appendChild(group);
+});
+select.addEventListener("change", function () {
+if (!select.value) return;
+var parts = select.value.split("|");
+state.block = parts[0];
+state.query = "";
+state.status = "all";
+document.getElementById("search").value = "";
+syncChips(); syncTabs(); applyFilters();
+var card = document.getElementById("pref-" + parts[0] + "-" + parts[1]);
+if (card) {
+card.scrollIntoView({ block: "center"});
+card.classList.remove("flash");
+void card.offsetWidth;
+card.classList.add("flash");
+}
+select.value = "";
+});
+
+/* ---------- filters ---------- */
+var state = { block: "all", status: "all", query: ""};
+
+var chips = document.querySelectorAll(".chip");
+function syncChips() {
+chips.forEach(function (c) {
+c.setAttribute("aria-pressed", c.dataset.status === state.status? "true": "false");
+});
+}
+chips.forEach(function (c) {
+c.addEventListener("click", function () {
+state.status = c.dataset.status;
+syncChips();
+applyFilters();
+});
+});
+
+var searchInput = document.getElementById("search");
+searchInput.addEventListener("input", function () {
+state.query = searchInput.value.trim();
+applyFilters();
+});
+
+document.getElementById("reset-btn").addEventListener("click", function () {
+state = { block: "all", status: "all", query: ""};
+searchInput.value = "";
+syncChips(); syncTabs(); applyFilters();
+});
+
+var resultLine = document.getElementById("result-line");
+function applyFilters() {
+var q = state.query;
+var visibleCards = 0, visibleBlocks = 0;
+DATA.forEach(function (block) {
+var section = document.getElementById("block-" + block.id);
+var blockVisible = state.block === "all" || state.block === block.id;
+var shownInBlock = 0;
+section.querySelectorAll(".card").forEach(function (card) {
+var matchStatus = state.status === "all" || card.dataset.cat === state.status;
+var matchQuery =!q || card.dataset.search.indexOf(q)!== -1;
+var show = blockVisible && matchStatus && matchQuery;
+card.hidden =!show;
+if (show) { shownInBlock++; visibleCards++;}
+});
+var banner = section.querySelector(".qualifier");
+var bannerMatch =!q || banner.dataset.search.indexOf(q)!== -1;
+var bannerStatusMatch = state.status === "all" || banner.dataset.cat === state.status;
+banner.hidden =!(blockVisible && bannerMatch && bannerStatusMatch);
+section.hidden =!(blockVisible && (shownInBlock > 0 ||!banner.hidden));
+if (!section.hidden) visibleBlocks++;
+});
+emptyEl.classList.toggle("show", visibleCards === 0 && visibleBlocks === 0);
+if (q) {
+resultLine.textContent = "「" + q + "」の検索結果：" + visibleCards + "件の都道府県が見つかりました";
+} else if (state.block!== "all") {
+var b = DATA.filter(function (x) { return x.id === state.block;})[0];
+resultLine.textContent = b.name + "ブロックを表示中（都道府県 " + visibleCards + "件）";
+} else if (state.status!== "all") {
+resultLine.textContent = (state.status === "published"? "確認済み": "結果未掲載・情報未発見・要確認") + "のみ表示中：" + visibleCards + "件の都道府県";
+} else {
+resultLine.textContent = "";
+}
+}
+
+/* ---------- summary stats ---------- */
+var totalPub = 0, totalOther = 0;
+DATA.forEach(function (b) {
+if (b.qualifier.s === "published") totalPub++; else totalOther++;
+b.prefs.forEach(function (p) { if (p.s === "published") totalPub++; else totalOther++;});
+});
+document.getElementById("stat-published").textContent = totalPub;
+document.getElementById("stat-other").textContent = totalOther;
+
+applyFilters();
+</script>
+</body>
+</html>
