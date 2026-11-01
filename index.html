@@ -78,11 +78,11 @@ a { color: var(--brand);}
 
 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px;}
 
-/* ---------- Hero ---------- */
+/* ---------- Hero (compact) ---------- */
 .hero {
 background: var(--brand-strong);
 color: #fff;
-padding: 30px 0 26px;
+padding: 14px 0 12px;
 position: relative;
 overflow: hidden;
 }
@@ -93,31 +93,32 @@ background:
 repeating-linear-gradient(90deg, transparent 0 118px, rgba(255,255,255,.05) 118px 120px);
 pointer-events: none;
 }
-.hero.wrap { position: relative; z-index: 1;}
-.hero.year-tag {
-display: inline-block; font-size:.8rem; font-weight: 900; letter-spacing:.05em;
+.hero .wrap { position: relative; z-index: 1;}
+.hero-top { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; }
+.hero .year-tag {
+display: inline-block; font-size:.72rem; font-weight: 900; letter-spacing:.05em;
 background: var(--accent); color: #23180a;
-border-radius: 999px; padding: 3px 12px; margin-bottom: 10px;
+border-radius: 999px; padding: 2px 10px;
+flex: none;
 }
 .hero h1 {
-margin: 0 0 8px;
-font-size: clamp(1.45rem, 4.6vw, 2.15rem);
+margin: 0;
+font-size: clamp(1.28rem, 3.6vw, 1.7rem);
 font-weight: 900;
 letter-spacing:.01em;
-line-height: 1.35;
+line-height: 1.3;
 }
-.hero h1.accent { color: var(--accent);}
-.hero p.lead { margin: 0 0 10px; font-size:.95rem; color: rgba(255,255,255,.92); max-width: 44em;}
-.hero p.sub { margin: 0 0 18px; font-size:.85rem; color: rgba(255,255,255,.78); max-width: 44em;}
-.hero-stats { display: flex; flex-wrap: wrap; gap: 8px;}
+.hero h1 .accent { color: var(--accent);}
+.hero p.lead { margin: 6px 0 10px; font-size:.86rem; line-height: 1.55; color: rgba(255,255,255,.9); max-width: 62em;}
+.hero-stats { display: flex; flex-wrap: wrap; gap: 6px;}
 .hero-stat {
-display: inline-flex; align-items: center; gap: 7px;
+display: inline-flex; align-items: center; gap: 6px;
 background: rgba(255,255,255,.12);
 border: 1px solid rgba(255,255,255,.22);
-border-radius: 999px; padding: 6px 14px;
-font-size:.85rem; font-weight: 500;
+border-radius: 999px; padding: 3px 11px;
+font-size:.8rem; font-weight: 500;
 }
-.hero-stat b { font-size: 1.05rem; font-weight: 900;}
+.hero-stat b { font-size: .95rem; font-weight: 900;}
 .dot { width: 9px; height: 9px; border-radius: 50%; flex: none;}
 .dot.ok { background: #58d68d;}
 .dot.wait { background: #c8cfc9;}
@@ -127,7 +128,7 @@ font-size:.85rem; font-weight: 500;
 position: sticky; top: 0; z-index: 40;
 background: var(--bg);
 border-bottom: 1px solid var(--line);
-padding: 12px 0 10px;
+padding: 8px 0 8px;
 }
 .controls-grid { display: grid; gap: 10px;}
 @media (min-width: 760px) {
@@ -169,7 +170,7 @@ white-space: nowrap;
 }
 
 /* ---------- Block tabs ---------- */
-.tabs { padding: 16px 0 4px;}
+.tabs { padding: 10px 0 2px;}
 .tabs-list {
 display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
 list-style: none; margin: 0; padding: 0;
@@ -195,11 +196,11 @@ cursor: pointer;
 .tab-btn[aria-pressed="true"] small { color: rgba(12,21,18,.7);}
 }
 
-.result-line { margin: 14px 2px 0; font-size:.88rem; color: var(--ink-2); min-height: 1.4em;}
+.result-line { margin: 8px 2px 0; font-size:.88rem; color: var(--ink-2); min-height: 1.4em;}
 
 /* ---------- Block sections ---------- */
 main { padding-bottom: 8px;}
-.block { padding: 26px 0 6px; scroll-margin-top: 150px;}
+.block { padding: 18px 0 6px; scroll-margin-top: 120px;}
 .block-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px;}
 .block-head h2 {
 margin: 0; font-size: 1.5rem; font-weight: 900;
@@ -240,7 +241,7 @@ border-radius: var(--radius);
 padding: 16px;
 box-shadow: var(--shadow);
 display: flex; flex-direction: column; gap: 8px;
-scroll-margin-top: 160px;
+scroll-margin-top: 130px;
 }
 .card.flash { animation: flash 1.6s ease;}
 @keyframes flash {
@@ -317,12 +318,12 @@ border: 1.5px solid var(--brand); border-radius: 10px; cursor: pointer;
 }
 
 
-.promo-band { background: var(--accent); color: #23180a; padding: 18px 0; }
-.promo-inner { display: flex; align-items: center; gap: 14px 22px; flex-wrap: wrap; }
+.promo-band { background: var(--accent); color: #23180a; padding: 9px 0; }
+.promo-inner { display: flex; align-items: center; gap: 8px 18px; flex-wrap: wrap; }
 .promo-text { flex: 1 1 320px; min-width: min(320px, 100%); }
-.promo-title { margin: 0 0 2px; font-size: 1.12rem; font-weight: 900; line-height: 1.5; }
-.promo-desc { margin: 0; font-size: .88rem; line-height: 1.6; color: rgba(35,24,10,.85); }
-.promo-btn { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 12px 26px; font-size: 1rem; font-weight: 900; color: #fff; background: var(--brand-strong); border-radius: 10px; text-decoration: none; box-shadow: 0 4px 14px rgba(35,24,10,.25); }
+.promo-title { margin: 0; font-size: .98rem; font-weight: 900; line-height: 1.45; display: inline; }
+.promo-desc { margin: 0; font-size: .82rem; line-height: 1.5; color: rgba(35,24,10,.85); display: inline; }
+.promo-btn { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 20px; font-size: .92rem; font-weight: 900; color: #fff; background: var(--brand-strong); border-radius: 10px; text-decoration: none; box-shadow: 0 4px 14px rgba(35,24,10,.25); }
 .promo-btn:hover { background: #073f2b; }
 .promo-bottom { padding: 6px 0 4px; }
 .promo-card { background: var(--brand-soft); border: 2px solid var(--brand); border-radius: var(--radius); padding: 20px; display: flex; align-items: center; gap: 14px 22px; flex-wrap: wrap; box-shadow: var(--shadow); }
@@ -331,14 +332,12 @@ border: 1.5px solid var(--brand); border-radius: 10px; cursor: pointer;
 .promo-card .promo-btn:hover { background: var(--brand-strong); }
 @media (prefers-color-scheme: dark) { .promo-card .promo-btn { color: #0c1512; } .promo-card .promo-btn:hover { color: #0c1512; } }
 
-/* ---------- Status legend ---------- */
-.status-legend { padding: 20px 0 4px; }
-.status-legend h2 { font-size: 1.1rem; font-weight: 900; margin: 0 0 12px; }
-.legend-grid { display: grid; gap: 10px; grid-template-columns: 1fr; list-style: none; margin: 0; padding: 0; }
-@media (min-width: 620px) { .legend-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 980px) { .legend-grid { grid-template-columns: repeat(4, 1fr); } }
-.legend-item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow); }
-.legend-item p { margin: 8px 0 0; font-size: .88rem; line-height: 1.6; color: var(--ink-2); }
+/* ---------- Status legend (compact strip) ---------- */
+.status-legend { padding: 10px 0 2px; display: flex; align-items: flex-start; gap: 10px 14px; flex-wrap: wrap; }
+.status-legend h2 { font-size: .88rem; font-weight: 900; margin: 5px 0 0; flex: none; }
+.legend-grid { display: flex; gap: 6px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; flex: 1 1 520px; }
+.legend-item { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px 4px 5px; display: inline-flex; align-items: center; gap: 7px; }
+.legend-item p { margin: 0; font-size: .78rem; line-height: 1.45; color: var(--ink-2); }
 
 /* ---------- Notes / footer ---------- */
 .notes { padding: 34px 0 10px;}
@@ -362,14 +361,15 @@ footer p { margin: 0 0 6px;}
 <body>
 <header class="hero">
 <div class="wrap">
+<div class="hero-top">
 <span class="year-tag">2026年4月以降実施 ・ 全小予選のみ</span>
-<h1>全国小学生バドミントン<br /><span class="accent">全小予選結果</span>リンクポータル</h1>
-<p class="lead">第35回全国小学生バドミントン選手権大会（2026年12月23日〜27日、茨城県水戸市・アダストリアみとアリーナ）に向けた、都道府県予選・地方ブロック予選の結果リンク集です。対象は2026年4月以降に実施された全小予選のみです。</p>
-<p class="sub">このページは「全小予選」専用です。全国小学生ABCバドミントン大会（ABC大会）は別の大会のため、その予選結果は含んでいません。2026年11月1日に47都道府県と9ブロックを調査し、再調査では各連盟の大会情報一覧・年度別アーカイブから結果PDFやDriveリンクまで辿りました。結果ページや結果PDFを実際に開いて2026年の全小予選であることを確認できたものだけを「確認済み」とし、開催は確認できたが結果のないものは「結果未掲載」、開催情報自体が見つからないものは「情報未発見」、予選と確定できないものは「要確認」と4段階で表示しています。</p>
+<h1>全国小学生バドミントン <span class="accent">全小予選結果</span>リンクポータル</h1>
+</div>
+<p class="lead">第35回全国小学生バドミントン選手権大会（2026年12月23日〜27日、水戸）の都道府県・ブロック予選の結果リンク集です。ABC大会の予選は含みません。調査方法と「確認済み」の基準は、ページ下部の「調査について」に記載しています。</p>
 <div class="hero-stats" aria-label="掲載状況の概要">
 <span class="hero-stat">調査日 <b>2026年11月1日</b></span>
-<span class="hero-stat"><span class="dot ok" aria-hidden="true"></span>確認済みカード／バナー <b id="stat-published">–</b> 件</span>
-<span class="hero-stat"><span class="dot wait" aria-hidden="true"></span>結果未掲載・情報未発見・要確認のカード／バナー <b id="stat-other">–</b> 件</span>
+<span class="hero-stat"><span class="dot ok" aria-hidden="true"></span>確認済み <b id="stat-published">–</b> 件</span>
+<span class="hero-stat"><span class="dot wait" aria-hidden="true"></span>結果未掲載・情報未発見・要確認 <b id="stat-other">–</b> 件</span>
 </div>
 </div>
 </header>
