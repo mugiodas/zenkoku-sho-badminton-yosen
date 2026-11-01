@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="全国小学生バドミントン選手権大会・ABC大会の都道府県予選と地方ブロック予選の結果リンクをまとめたポータルです。" />
+    <link rel="icon" href="data:," />
+    <title>全国小学生バドミントン予選結果ポータル</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f4f6f3;
+        --surface: #ffffff;
+        --surface-2: #eef2ec;
+        --ink: #1c2420;
+        --ink-2: #4c5a52;
+        --ink-3: #71806f;
+        --line: #d9e0d6;
+        --brand: #0e6b4a;
+        --brand-strong: #0a553b;
+        --brand-soft: #e2f1e9;
+        --accent: #e8a13a;
+        --ok: #178a4c;
+        --ok-bg: #e3f4e9;
+        --wait: #6b756d;
+        --wait-bg: #ecefec;
+        --focus: #ffb02e;
+        --shadow: 0 1px 2px rgba(20, 40, 30, .06), 0 6px 18px rgba(20, 40, 30, .06);
+        --radius: 14px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #101613;
+          --surface: #1a211d;
+          --surface-2: #232b26;
+          --ink: #eef3ee;
+          --ink-2: #b7c4b9;
+          --ink-3: #8b9a8e;
+          --line: #33413a;
+          --brand: #2fae7f;
+          --brand-strong: #57c79b;
+          --brand-soft: #173328;
+          --accent: #e8a13a;
+          --ok: #4cc983;
+          --ok-bg: #173a28;
+          --wait: #9aa79d;
+          --wait-bg: #2a332d;
+          --shadow: 0 1px 2px rgba(0,0,0,.35), 0 6px 18px rgba(0,0,0,.3);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        * { animation: none !important; transition: none !important; }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", system-ui, sans-serif;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--brand); }
+      :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+
+      .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        background: var(--brand-strong);
+        color: #fff;
+        padding: 30px 0 26px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::after {
+        content: "";
+        position: absolute; inset: 0;
+        background:
+          repeating-linear-gradient(90deg, transparent 0 118px, rgba(255,255,255,.05) 118px 120px);
+        pointer-events: none;
+      }
+      .hero .wrap { position: relative; z-index: 1; }
+      .hero h1 {
+        margin: 0 0 8px;
+        font-size: clamp(1.45rem, 4.6vw, 2.15rem);
+        font-weight: 900;
+        letter-spacing: .01em;
+        line-height: 1.35;
+      }
+      .hero h1 .accent { color: var(--accent); }
+      .hero p.lead { margin: 0 0 18px; font-size: .95rem; color: rgba(255,255,255,.88); max-width: 40em; }
+      .hero-stats { display: flex; flex-wrap: wrap; gap: 8px; }
+      .hero-stat {
+        display: inline-flex; align-items: center; gap: 7px;
+        background: rgba(255,255,255,.12);
+        border: 1px solid rgba(255,255,255,.22);
+        border-radius: 999px; padding: 6px 14px;
+        font-size: .85rem; font-weight: 500;
+      }
+      .hero-stat b { font-size: 1.05rem; font-weight: 900; }
+      .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+      .dot.ok { background: #58d68d; }
+      .dot.wait { background: #c8cfc9; }
+
+      /* ---------- Controls ---------- */
+      .controls {
+        position: sticky; top: 0; z-index: 40;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+        padding: 12px 0 10px;
+      }
+      .controls-grid { display: grid; gap: 10px; }
+      @media (min-width: 760px) {
+        .controls-grid { grid-template-columns: 1fr 1fr auto; align-items: end; }
+      }
+      .field label { display: block; font-size: .78rem; font-weight: 700; color: var(--ink-2); margin-bottom: 4px; }
+      .field select, .field input[type="search"] {
+        width: 100%; min-height: 48px;
+        padding: 10px 14px;
+        font: inherit; font-size: 1rem;
+        color: var(--ink);
+        background: var(--surface);
+        border: 1.5px solid var(--line);
+        border-radius: 10px;
+        appearance: none;
+      }
+      .field select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%234c5a52' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        padding-right: 40px;
+      }
+      .field select:focus, .field input[type="search"]:focus { border-color: var(--brand); outline: none; box-shadow: 0 0 0 3px var(--brand-soft); }
+      .status-chips { display: flex; gap: 8px; }
+      .chip {
+        flex: 1; min-height: 48px;
+        padding: 8px 10px;
+        font: inherit; font-size: .9rem; font-weight: 700;
+        color: var(--ink-2);
+        background: var(--surface);
+        border: 1.5px solid var(--line);
+        border-radius: 10px;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+      @media (prefers-color-scheme: dark) {
+        .chip[aria-pressed="true"] { color: #0c1512; }
+      }
+
+      /* ---------- Block tabs ---------- */
+      .tabs { padding: 16px 0 4px; }
+      .tabs-list {
+        display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+        list-style: none; margin: 0; padding: 0;
+      }
+      @media (min-width: 760px) { .tabs-list { grid-template-columns: repeat(10, 1fr); } }
+      .tab-btn {
+        width: 100%; min-height: 52px;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;
+        padding: 6px 2px;
+        font: inherit; font-size: .92rem; font-weight: 700;
+        color: var(--ink);
+        background: var(--surface);
+        border: 1.5px solid var(--line);
+        border-top: 4px solid var(--tab-accent, var(--line));
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .tab-btn small { font-size: .68rem; font-weight: 500; color: var(--ink-3); }
+      .tab-btn[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+      .tab-btn[aria-pressed="true"] small { color: rgba(255,255,255,.75); }
+      @media (prefers-color-scheme: dark) {
+        .tab-btn[aria-pressed="true"] { color: #0c1512; }
+        .tab-btn[aria-pressed="true"] small { color: rgba(12,21,18,.7); }
+      }
+
+      .result-line { margin: 14px 2px 0; font-size: .88rem; color: var(--ink-2); min-height: 1.4em; }
+
+      /* ---------- Block sections ---------- */
+      main { padding-bottom: 8px; }
+      .block { padding: 26px 0 6px; scroll-margin-top: 150px; }
+      .block-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+      .block-head h2 {
+        margin: 0; font-size: 1.5rem; font-weight: 900;
+        display: flex; align-items: center; gap: 10px;
+      }
+      .block-head h2::before {
+        content: ""; width: 12px; height: 26px; border-radius: 3px;
+        background: var(--block-accent, var(--brand)); flex: none;
+      }
+      .block-head .count { font-size: .85rem; color: var(--ink-2); }
+
+      /* Block qualifier banner */
+      .qualifier {
+        background: var(--brand-soft);
+        border: 1.5px solid var(--brand);
+        border-radius: var(--radius);
+        padding: 18px;
+        margin-bottom: 16px;
+        box-shadow: var(--shadow);
+      }
+      .qualifier .q-label {
+        display: inline-block; font-size: .75rem; font-weight: 900; letter-spacing: .06em;
+        color: var(--brand-strong); background: var(--surface);
+        border: 1px solid var(--brand);
+        padding: 2px 10px; border-radius: 999px; margin-bottom: 8px;
+      }
+      @media (prefers-color-scheme: dark) { .qualifier .q-label { color: var(--brand-strong); } }
+      .qualifier h3 { margin: 0 0 6px; font-size: 1.12rem; font-weight: 900; line-height: 1.5; }
+      .qualifier .meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .87rem; color: var(--ink-2); margin-bottom: 14px; }
+      .qualifier .meta span { display: inline-flex; align-items: center; gap: 6px; }
+      .qualifier .meta svg { flex: none; }
+
+      /* Prefecture cards */
+      .cards { display: grid; gap: 12px; grid-template-columns: 1fr; list-style: none; margin: 0; padding: 0; }
+      @media (min-width: 620px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+      @media (min-width: 980px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 16px;
+        box-shadow: var(--shadow);
+        display: flex; flex-direction: column; gap: 8px;
+        scroll-margin-top: 160px;
+      }
+      .card.flash { animation: flash 1.6s ease; }
+      @keyframes flash {
+        0%, 60% { box-shadow: 0 0 0 4px var(--accent), var(--shadow); }
+        100% { box-shadow: var(--shadow); }
+      }
+      .card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+      .pref-name { font-size: 1.3rem; font-weight: 900; margin: 0; }
+      .badge {
+        flex: none; display: inline-flex; align-items: center; gap: 6px;
+        font-size: .78rem; font-weight: 700;
+        padding: 4px 11px; border-radius: 999px;
+      }
+      .badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+      .badge.ok { color: var(--ok); background: var(--ok-bg); }
+      .badge.wait { color: var(--wait); background: var(--wait-bg); }
+      .event-tag {
+        align-self: flex-start;
+        font-size: .72rem; font-weight: 700;
+        color: var(--ink-2); background: var(--surface-2);
+        border-radius: 6px; padding: 2px 8px;
+      }
+      .tournament { margin: 0; font-size: .92rem; font-weight: 500; line-height: 1.55; }
+      .card-meta { font-size: .83rem; color: var(--ink-3); display: flex; align-items: center; gap: 6px; margin-top: auto; }
+      .card-meta svg { flex: none; }
+
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        min-height: 48px; width: 100%;
+        padding: 10px 16px;
+        font: inherit; font-size: .98rem; font-weight: 700;
+        color: #fff; background: var(--brand);
+        border: none; border-radius: 10px;
+        text-decoration: none; cursor: pointer;
+      }
+      .btn:hover { background: var(--brand-strong); }
+      @media (prefers-color-scheme: dark) { .btn { color: #0c1512; } .btn:hover { color: #0c1512; } }
+      .btn.disabled {
+        background: var(--wait-bg); color: var(--wait);
+        cursor: not-allowed; pointer-events: none;
+      }
+      .qualifier .btn { width: auto; min-width: min(320px, 100%); }
+      .btn .kind {
+        font-size: .72rem; font-weight: 900; letter-spacing: .04em;
+        background: rgba(255,255,255,.25); border-radius: 5px; padding: 1px 7px;
+      }
+      @media (prefers-color-scheme: dark) { .btn .kind { background: rgba(12,21,18,.18); } }
+
+      .empty {
+        display: none;
+        text-align: center; padding: 44px 16px;
+        color: var(--ink-2); background: var(--surface);
+        border: 1px dashed var(--line); border-radius: var(--radius);
+        margin: 18px 0 8px;
+      }
+      .empty.show { display: block; }
+      .empty p { margin: 0 0 14px; }
+      .empty button {
+        min-height: 48px; padding: 10px 22px;
+        font: inherit; font-weight: 700;
+        color: var(--brand); background: var(--surface);
+        border: 1.5px solid var(--brand); border-radius: 10px; cursor: pointer;
+      }
+
+      /* ---------- Notes / footer ---------- */
+      .notes { padding: 34px 0 10px; }
+      .notes h2 { font-size: 1.25rem; font-weight: 900; margin: 0 0 14px; }
+      .notes-grid { display: grid; gap: 12px; }
+      @media (min-width: 760px) { .notes-grid { grid-template-columns: 1fr 1fr; } }
+      .note {
+        background: var(--surface); border: 1px solid var(--line);
+        border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+      }
+      .note h3 { margin: 0 0 10px; font-size: 1rem; font-weight: 900; display: flex; align-items: center; gap: 8px; }
+      .note ul { margin: 0; padding-left: 1.25em; font-size: .9rem; color: var(--ink-2); }
+      .note li { margin-bottom: 6px; }
+      .note li b { color: var(--ink); }
+      footer { border-top: 1px solid var(--line); margin-top: 26px; padding: 20px 0 34px; font-size: .83rem; color: var(--ink-3); }
+      footer p { margin: 0 0 6px; }
+
+      /* ---------- Toast ---------- */
+      .toast {
+        position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 16px);
+        max-width: min(92vw, 460px);
+        background: var(--ink); color: var(--bg);
+        font-size: .88rem; font-weight: 500; line-height: 1.55;
+        padding: 12px 18px; border-radius: 10px;
+        opacity: 0; pointer-events: none; transition: opacity .25s ease, transform .25s ease;
+        z-index: 60; box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      }
+      .toast.show { opacity: 1; transform: translate(-50%, 0); }
+      [hidden] { display: none !important; }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <h1>全国小学生バドミントン<br /><span class="accent">予選結果</span>リンクポータル</h1>
+        <p class="lead">全国小学生バドミントン選手権大会とABC大会の、都道府県予選・地方ブロック予選の結果リンクをまとめました。自分の都道府県を選ぶだけで、公式の結果PDF・速報ページへすぐたどり着けます。</p>
+        <div class="hero-stats" aria-label="掲載状況の概要">
+          <span class="hero-stat">掲載 <b>47</b> 都道府県・<b>9</b> ブロック</span>
+          <span class="hero-stat"><span class="dot ok" aria-hidden="true"></span>公開中 <b id="stat-published">–</b> 件</span>
+          <span class="hero-stat"><span class="dot wait" aria-hidden="true"></span>準備中 <b id="stat-preparing">–</b> 件</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <div class="wrap controls-grid">
+        <div class="field">
+          <label for="pref-select">都道府県クイック選択</label>
+          <select id="pref-select">
+            <option value="">都道府県を選んでください</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="search">キーワード検索</label>
+          <input type="search" id="search" placeholder="例：滋賀、ABC、選手権…" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label id="status-label">公開ステータスで絞り込み</label>
+          <div class="status-chips" role="group" aria-labelledby="status-label">
+            <button type="button" class="chip" data-status="all" aria-pressed="true">すべて</button>
+            <button type="button" class="chip" data-status="published" aria-pressed="false">公開中</button>
+            <button type="button" class="chip" data-status="preparing" aria-pressed="false">準備中</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="tabs wrap" aria-label="地方ブロックで切り替え">
+      <ul class="tabs-list" id="tabs-list"></ul>
+    </nav>
+
+    <div class="wrap">
+      <p class="result-line" id="result-line" role="status" aria-live="polite"></p>
+    </div>
+
+    <main class="wrap" id="main">
+      <div class="empty" id="empty">
+        <p>条件に合う結果が見つかりませんでした。<br />検索キーワードや絞り込みを変えてお試しください。</p>
+        <button type="button" id="reset-btn">絞り込みをリセット</button>
+      </div>
+    </main>
+
+    <section class="notes wrap" aria-labelledby="notes-title">
+      <h2 id="notes-title">このページの工夫と運用のコツ</h2>
+      <div class="notes-grid">
+        <div class="note">
+          <h3>UIの工夫点</h3>
+          <ul>
+            <li><b>3つの探し方</b>を用意：ブロックタブ、都道府県クイック選択ドロップダウン、キーワード検索。どの入口からでも数タップで目的の結果へ。</li>
+            <li>各ブロックの先頭に<b>ブロック予選の結果を大きなバナーで強調</b>し、都道府県カードと視覚的に区別。</li>
+            <li>リンクボタンは<b>高さ48px以上</b>を確保し、スマホでも押し間違えにくいモバイルファースト設計。</li>
+            <li>ステータスは<b>緑＝公開中／グレー＝準備中</b>のバッジ＋ドットで色分けし、一覧を流し見しても判別可能。</li>
+            <li>クイック選択で選んだ都道府県カードは<b>枠線が光って</b>知らせるので、移動先を見失わない。</li>
+          </ul>
+        </div>
+        <div class="note">
+          <h3>運用のコツ（更新・リンク切れ対策）</h3>
+          <ul>
+            <li>リンク情報はページ内の<b>データ配列（DATA）だけを編集</b>すれば反映される構造。HTMLを触らずにURL・更新日・ステータスの差し替えが可能。</li>
+            <li>結果PDFは協会サイトの深い階層に置かれがちでURLが変わりやすい。リンク切れ時はまず<b>各都道府県協会の「大会結果」一覧ページ</b>へ差し替えると長持ちする。</li>
+            <li>大会シーズン（秋の予選時期）は<b>週1回のリンクチェック</b>を習慣化。ブラウザの拡張機能や無料のリンクチェッカーで一括確認できる。</li>
+            <li>ステータスは「準備中 → 公開中」の切り替え忘れが起きやすいので、<b>大会日程と連動した更新チェックリスト</b>を用意しておくと安心。</li>
+            <li>現在表示されているリンク先・更新日は<b>サンプルデータ</b>です。公開前に各協会の公式URLへ差し替えてください。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <p>全国小学生バドミントン予選結果ポータル — 都道府県予選・地方ブロック予選の結果リンク集</p>
+        <p>結果の内容については、必ず各都道府県バドミントン協会・連盟の公式発表をご確認ください。</p>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status"></div>
+    <noscript><p style="padding:16px;text-align:center;">このページの絞り込み機能にはJavaScriptが必要です。</p></noscript>
+
+    <script>
+      /* ============================================================
+         データ：運用時はこの DATA の url / updated / status を
+         実際の公式リンクに差し替えるだけで更新できます。
+         status: "published"（公開中） | "preparing"（準備中）
+         type:   "PDF" | "Web"
+         ============================================================ */
+      var ZENKOKU = "第35回全国小学生バドミントン選手権大会";
+      var ABC = "第27回全国小学生ABCバドミントン大会";
+
+      var DATA = [
+        {
+          id: "hokkaido", name: "北海道", accent: "#3a7ca5",
+          qualifier: { event: ZENKOKU, status: "published", updated: "2026-10-26", type: "PDF", venue: "北海道ブロック予選" },
+          prefs: [
+            { name: "北海道", event: ZENKOKU, status: "published", updated: "2026-10-19", type: "PDF" }
+          ]
+        },
+        {
+          id: "tohoku", name: "東北", accent: "#4d9464",
+          qualifier: { event: ZENKOKU, status: "published", updated: "2026-10-30", type: "Web", venue: "東北ブロック予選" },
+          prefs: [
+            { name: "青森県", event: ZENKOKU, status: "published", updated: "2026-10-12", type: "PDF" },
+            { name: "岩手県", event: ZENKOKU, status: "preparing", updated: null, type: "PDF" },
+            { name: "宮城県", event: ZENKOKU, status: "published", updated: "2026-10-20", type: "Web" },
+            { name: "秋田県", event: ABC, status: "published", updated: "2026-10-05", type: "PDF" },
+            { name: "山形県", event: ZENKOKU, status: "preparing", updated: null, type: "Web" },
+            { name: "福島県", event: ZENKOKU, status: "published", updated: "2026-10-27", type: "PDF" }
+          ]
+        },
+        {
+          id: "kanto", name: "関東", accent: "#c2603e",
+          qualifier: { event: ZENKOKU, status: "published", updated: "2026-10-31", type: "PDF", venue: "関東ブロック予選" },
+          prefs: [
+            { name: "茨城県", event: ZENKOKU, status: "published", updated: "2026-10-18", type: "PDF" },
+            { name: "栃木県", event: ZENKOKU, status: "preparing", updated: null, type: "PDF" },
+            { name: "群馬県", event: ZENKOKU, status: "published", updated: "2026-10-21", type: "Web" },
+            { name: "埼玉県", event: ZENKOKU, status: "published", updated: "2026-10-25", type: "PDF" },
+            { name: "千葉県", event: ABC, status: "published", updated: "2026-10-11", type: "PDF" },
+            { name: "東京都", event: ZENKOKU, status: "published", updated: "2026-10-28", type: "Web" },
+            { name: "神奈川県", event: ZENKOKU, status: "published", updated: "2026-10-24", type: "PDF" },
+            { name: "山梨県", event: ZENKOKU, status: "preparing", updated: null, type: "PDF" }
+          ]
+        },
+        {
+          id: "hokuriku", name: "北陸", accent: "#5b7fa6",
+          qualifier: { event: ZENKOKU, status: "preparing", updated: null, type: "PDF", venue: "北陸ブロック予選（北信越）" },
+          prefs: [
+            { name: "新潟県", event: ZENKOKU, status: "published", updated: "2026-10-15", type: "PDF" },
+            { name: "富山県", event: ZENKOKU, status: "preparing", updated: null, type: "Web" },
+            { name: "石川県", event: ZENKOKU, status: "published", updated: "2026-10-22", type: "PDF" },
+            { name: "福井県", event: ABC, status: "published", updated: "2026-10-08", type: "PDF" },
+            { name: "長野県", event: ZENKOKU, status: "preparing", updated: null, type: "PDF" }
+          ]
+        },
+        {
+          id: "tokai", name: "東海", accent: "#b3812e",
+          qualifier: { event: ZENKOKU, status: "published", updated: "2026-10-29", type: "PDF", venue: "東海ブロック予選" },
+          prefs: [
+            { name: "岐阜県", event: ZENKOKU, status: "published", updated: "2026-10-17", type: "PDF" },
+            { name: "静岡県", event: ZENKOKU, status: "published", updated: "2026-10-23", type: "Web" },
+            { name: "愛知県", event: ZENKOKU, status: "published", updated: "2026-10-26", type: "PDF" },
+            { name: "三重県", event: ZENKOKU, status: "preparing", updated: null, type: "PDF" }
+          ]
+        },
+        {
+          id: "kinki", name: "近畿", accent: "#8a5fa0",
+          qualifier: { event: ZENKOKU, status: "published", updated: "2026-11-01", type: "Web", venue: "近畿ブロック予選" },
+          prefs: [
+            { name: "滋賀県", event: ZENKOKU, status: "published", updated: "2026-10-19", type: "PDF" },
+            { name: "京都府", event: ZENKOKU, status: "published", updated: "2026-10-21", type: "PDF" },
+            { name: "大阪府", event: ZENKOKU, status: "published", updated: "2026-10-27", type: "Web" },
+            { name: "兵庫県", event: ABC, status: "published", updated: "2026-10-13", type: "PDF" },
+            { name: "奈良県", event: ZENKOKU, status: "preparing", updated: null, type: "PDF" },
+            { name: "和歌山県", event: ZENKOKU, status: "preparing", updated: null, type: "PDF" }
+          ]
+        },
+        {
+          id: "chugoku", name: "中国", accent: "#4f8f8a",
+          qualifier: { event: ZENKOKU, status: "preparing", updated: null, type: "PDF", venue: "中国ブロック予選" },
+          prefs: [
+            { name: "鳥取県", event: ZENKOKU, status: "preparing", updated: null, type: "PDF" },
+            { name: "島根県", event: ZENKOKU, status: "preparing", updated: null, type: "Web" },
+            { name: "岡山県", event: ZENKOKU, status: "published", updated: "2026-10-16", type: "PDF" },
+            { name: "広島県", event: ZENKOKU, status: "published", updated: "2026-10-24", type: "PDF" },
+            { name: "山口県", event: ABC, status: "published", updated: "2026-10-09", type: "Web" }
+          ]
+        },
+        {
+          id: "shikoku", name: "四国", accent: "#7d9b3a",
+          qualifier: { event: ZENKOKU, status: "published", updated: "2026-10-28", type: "PDF", venue: "四国ブロック予選" },
+          prefs: [
+            { name: "徳島県", event: ZENKOKU, status: "published", updated: "2026-10-14", type: "PDF" },
+            { name: "香川県", event: ZENKOKU, status: "published", updated: "2026-10-20", type: "Web" },
+            { name: "愛媛県", event: ZENKOKU, status: "preparing", updated: null, type: "PDF" },
+            { name: "高知県", event: ZENKOKU, status: "preparing", updated: null, type: "PDF" }
+          ]
+        },
+        {
+          id: "kyushu", name: "九州・沖縄", accent: "#c2496b",
+          qualifier: { event: ZENKOKU, status: "published", updated: "2026-10-30", type: "PDF", venue: "九州ブロック予選" },
+          prefs: [
+            { name: "福岡県", event: ZENKOKU, status: "published", updated: "2026-10-25", type: "PDF" },
+            { name: "佐賀県", event: ZENKOKU, status: "preparing", updated: null, type: "PDF" },
+            { name: "長崎県", event: ZENKOKU, status: "published", updated: "2026-10-18", type: "Web" },
+            { name: "熊本県", event: ABC, status: "published", updated: "2026-10-12", type: "PDF" },
+            { name: "大分県", event: ZENKOKU, status: "preparing", updated: null, type: "PDF" },
+            { name: "宮崎県", event: ZENKOKU, status: "published", updated: "2026-10-22", type: "PDF" },
+            { name: "鹿児島県", event: ZENKOKU, status: "published", updated: "2026-10-26", type: "Web" },
+            { name: "沖縄県", event: ZENKOKU, status: "published", updated: "2026-10-29", type: "PDF" }
+          ]
+        }
+      ];
+
+      /* ---------- helpers ---------- */
+      function fmtDate(iso) {
+        if (!iso) return null;
+        var p = iso.split("-");
+        return p[0] + "年" + Number(p[1]) + "月" + Number(p[2]) + "日";
+      }
+      var ICON_EXT = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>';
+      var ICON_CAL = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
+      var ICON_PIN = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>';
+
+      function badgeHTML(status) {
+        return status === "published"
+          ? '<span class="badge ok">公開中</span>'
+          : '<span class="badge wait">準備中</span>';
+      }
+      function buttonHTML(status, type, label) {
+        if (status === "published") {
+          return '<a class="btn sample-link" href="#" data-kind="' + type + '">' +
+            '<span class="kind">' + type + '</span>' + label + ICON_EXT + '</a>';
+        }
+        return '<span class="btn disabled" aria-disabled="true">結果は準備中です</span>';
+      }
+      function metaDateHTML(status, updated) {
+        if (status === "published" && updated) {
+          return '<span>' + ICON_CAL + '更新：' + fmtDate(updated) + '</span>';
+        }
+        return '<span>' + ICON_CAL + '結果公開後にリンクが開きます</span>';
+      }
+
+      /* ---------- render ---------- */
+      var main = document.getElementById("main");
+      var emptyEl = document.getElementById("empty");
+
+      DATA.forEach(function (block) {
+        var section = document.createElement("section");
+        section.className = "block";
+        section.id = "block-" + block.id;
+        section.dataset.block = block.id;
+        section.style.setProperty("--block-accent", block.accent);
+        section.setAttribute("aria-labelledby", "h-" + block.id);
+
+        var pubCount = block.prefs.filter(function (p) { return p.status === "published"; }).length;
+        var q = block.qualifier;
+
+        var html = "";
+        html += '<div class="block-head"><h2 id="h-' + block.id + '">' + block.name + 'ブロック</h2>' +
+          '<span class="count">' + block.prefs.length + '都道府県 ・ 公開中 ' + pubCount + '件</span></div>';
+
+        /* Block qualifier banner */
+        html += '<article class="qualifier" data-qstatus="' + q.status + '" data-search="' + block.name + ' ブロック予選 ' + q.event + '">' +
+          '<span class="q-label">地方ブロック予選</span>' +
+          '<h3>' + q.event + ' ' + block.name + 'ブロック予選 結果</h3>' +
+          '<div class="meta">' +
+            '<span>' + ICON_PIN + q.venue + '</span>' +
+            metaDateHTML(q.status, q.updated) +
+            '<span>ステータス：' + (q.status === "published" ? "公開中" : "準備中") + '</span>' +
+          '</div>' +
+          buttonHTML(q.status, q.type, "ブロック予選の結果を見る") +
+          '</article>';
+
+        /* Prefecture cards */
+        html += '<ul class="cards">';
+        block.prefs.forEach(function (p) {
+          var tournament = p.event + " " + p.name + "予選";
+          html += '<li class="card" id="pref-' + block.id + "-" + p.name + '" data-status="' + p.status + '" data-search="' + p.name + " " + tournament + '">' +
+            '<div class="card-top"><h3 class="pref-name">' + p.name + '</h3>' + badgeHTML(p.status) + '</div>' +
+            '<span class="event-tag">' + (p.event === ABC ? "ABC大会" : "全国小学生選手権") + '</span>' +
+            '<p class="tournament">' + tournament + '</p>' +
+            '<p class="card-meta">' + metaDateHTML(p.status, p.updated) + '</p>' +
+            buttonHTML(p.status, p.type, "結果を見る") +
+            '</li>';
+        });
+        html += '</ul>';
+        section.innerHTML = html;
+        main.insertBefore(section, emptyEl);
+      });
+
+      /* ---------- tabs ---------- */
+      var tabsList = document.getElementById("tabs-list");
+      var tabDefs = [{ id: "all", name: "すべて", sub: "全国" }].concat(
+        DATA.map(function (b) { return { id: b.id, name: b.name, sub: b.prefs.length + "件", accent: b.accent }; })
+      );
+      tabDefs.forEach(function (t) {
+        var li = document.createElement("li");
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "tab-btn";
+        btn.dataset.blockTab = t.id;
+        btn.setAttribute("aria-pressed", t.id === "all" ? "true" : "false");
+        if (t.accent) btn.style.setProperty("--tab-accent", t.accent);
+        btn.innerHTML = t.name + "<small>" + t.sub + "</small>";
+        btn.addEventListener("click", function () {
+          state.block = t.id;
+          syncTabs();
+          applyFilters();
+          if (t.id !== "all") {
+            var sec = document.getElementById("block-" + t.id);
+            if (sec) sec.scrollIntoView({ block: "start" });
+          } else {
+            window.scrollTo({ top: 0 });
+          }
+        });
+        li.appendChild(btn);
+        tabsList.appendChild(li);
+      });
+      function syncTabs() {
+        tabsList.querySelectorAll(".tab-btn").forEach(function (b) {
+          b.setAttribute("aria-pressed", b.dataset.blockTab === state.block ? "true" : "false");
+        });
+      }
+
+      /* ---------- prefecture quick select ---------- */
+      var select = document.getElementById("pref-select");
+      DATA.forEach(function (block) {
+        var group = document.createElement("optgroup");
+        group.label = block.name + "ブロック";
+        block.prefs.forEach(function (p) {
+          var opt = document.createElement("option");
+          opt.value = block.id + "|" + p.name;
+          opt.textContent = p.name;
+          group.appendChild(opt);
+        });
+        select.appendChild(group);
+      });
+      select.addEventListener("change", function () {
+        if (!select.value) return;
+        var parts = select.value.split("|");
+        state.block = parts[0];
+        state.query = "";
+        state.status = "all";
+        document.getElementById("search").value = "";
+        syncChips(); syncTabs(); applyFilters();
+        var card = document.getElementById("pref-" + parts[0] + "-" + parts[1]);
+        if (card) {
+          card.scrollIntoView({ block: "center" });
+          card.classList.remove("flash");
+          void card.offsetWidth;
+          card.classList.add("flash");
+        }
+        select.value = "";
+      });
+
+      /* ---------- filters ---------- */
+      var state = { block: "all", status: "all", query: "" };
+
+      var chips = document.querySelectorAll(".chip");
+      function syncChips() {
+        chips.forEach(function (c) {
+          c.setAttribute("aria-pressed", c.dataset.status === state.status ? "true" : "false");
+        });
+      }
+      chips.forEach(function (c) {
+        c.addEventListener("click", function () {
+          state.status = c.dataset.status;
+          syncChips();
+          applyFilters();
+        });
+      });
+
+      var searchInput = document.getElementById("search");
+      searchInput.addEventListener("input", function () {
+        state.query = searchInput.value.trim();
+        applyFilters();
+      });
+
+      document.getElementById("reset-btn").addEventListener("click", function () {
+        state = { block: "all", status: "all", query: "" };
+        searchInput.value = "";
+        syncChips(); syncTabs(); applyFilters();
+      });
+
+      var resultLine = document.getElementById("result-line");
+      function applyFilters() {
+        var q = state.query;
+        var visibleCards = 0, visibleBlocks = 0;
+        DATA.forEach(function (block) {
+          var section = document.getElementById("block-" + block.id);
+          var blockVisible = state.block === "all" || state.block === block.id;
+          var shownInBlock = 0;
+          section.querySelectorAll(".card").forEach(function (card) {
+            var matchStatus = state.status === "all" || card.dataset.status === state.status;
+            var matchQuery = !q || card.dataset.search.indexOf(q) !== -1;
+            var show = blockVisible && matchStatus && matchQuery;
+            card.hidden = !show;
+            if (show) { shownInBlock++; visibleCards++; }
+          });
+          /* ブロック予選バナー：ブロック表示中・ステータス一致・検索一致のときだけ表示 */
+          var banner = section.querySelector(".qualifier");
+          var bannerMatch = !q || banner.dataset.search.indexOf(q) !== -1;
+          var bannerStatusMatch = state.status === "all" || banner.dataset.qstatus === state.status;
+          banner.hidden = !(blockVisible && bannerMatch && bannerStatusMatch);
+          section.hidden = !(blockVisible && (shownInBlock > 0 || !banner.hidden));
+          if (!section.hidden) visibleBlocks++;
+        });
+        emptyEl.classList.toggle("show", visibleCards === 0 && visibleBlocks === 0);
+        if (q) {
+          resultLine.textContent = "「" + q + "」の検索結果：" + visibleCards + "件の都道府県が見つかりました";
+        } else if (state.block !== "all") {
+          var b = DATA.filter(function (x) { return x.id === state.block; })[0];
+          resultLine.textContent = b.name + "ブロックを表示中（都道府県 " + visibleCards + "件）";
+        } else if (state.status !== "all") {
+          resultLine.textContent = (state.status === "published" ? "公開中" : "準備中") + "のみ表示中：" + visibleCards + "件";
+        } else {
+          resultLine.textContent = "";
+        }
+      }
+
+      /* ---------- summary stats ---------- */
+      var totalPub = 0, totalPrep = 0;
+      DATA.forEach(function (b) {
+        if (b.qualifier.status === "published") totalPub++; else totalPrep++;
+        b.prefs.forEach(function (p) { if (p.status === "published") totalPub++; else totalPrep++; });
+      });
+      document.getElementById("stat-published").textContent = totalPub;
+      document.getElementById("stat-preparing").textContent = totalPrep;
+
+      /* ---------- sample link toast ---------- */
+      var toast = document.getElementById("toast");
+      var toastTimer = null;
+      document.addEventListener("click", function (e) {
+        var link = e.target.closest ? e.target.closest(".sample-link") : null;
+        if (!link) return;
+        e.preventDefault();
+        toast.textContent = "このリンクはサンプルです。運用時は各都道府県協会・連盟の公式結果URLに差し替えてください。";
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 3400);
+      });
+
+      applyFilters();
+    </script>
+  </body>
+</html>
