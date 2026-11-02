@@ -301,9 +301,9 @@ background: rgba(255,255,255,.25); border-radius: 5px; padding: 1px 7px;
 }
 .btn.secondary.kind { background: var(--brand-soft);}
 @media (prefers-color-scheme: dark) {.btn.kind { background: rgba(12,21,18,.18);}.btn.secondary.kind { background: var(--brand-soft);}}
-.btn svg { flex: none;} .seg { display: inline-block; flex: 0 0 auto; white-space: nowrap; max-width: 100%; overflow-wrap: anywhere; }
+.btn svg { flex: none;} 
 .link-item { display: grid; gap: 3px; min-width: 0;}
-.pdf-direct { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; justify-self: center; max-width: 100%; min-width: 0; text-align: center; font-size:.78rem; font-weight: 500; line-height: 1.4; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; padding: 2px 6px;}
+.pdf-direct { justify-self: center; max-width: 100%; min-width: 0; text-align: center; font-size:.78rem; font-weight: 500; line-height: 1.4; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; padding: 2px 6px;}
 .pdf-direct:hover { color: var(--brand);}
 .pdf-direct-inline { font-size:.82em; font-weight: 500; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap;}
 .pdf-direct-inline:hover { color: var(--brand);}
@@ -364,7 +364,7 @@ border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
 footer { border-top: 1px solid var(--line); margin-top: 26px; padding: 20px 0 34px; font-size:.83rem; color: var(--ink-3);}
 footer p { margin: 0 0 6px;}
 [hidden] { display: none!important;}
-.btn-label { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; flex: 1 1 auto; min-width: 0; } .tabs-list > li, .field, .chip { min-width: 0; } @media (max-width: 480px) { .card, .qualifier { padding: 14px; } .btn { padding: 10px 12px; gap: 6px; } .chip { padding: 8px 6px; font-size: .85rem; } } </style>
+.btn-label { flex: 1 1 auto; min-width: 0; } .tabs-list > li, .field, .chip { min-width: 0; } @media (max-width: 480px) { .card, .qualifier { padding: 14px; } .btn { padding: 10px 12px; gap: 6px; } .chip { padding: 8px 6px; font-size: .85rem; } } </style>
 </head>
 <body>
 <header class="hero">
@@ -1174,7 +1174,7 @@ return /\.pdf$/i.test(clean);
 function viewerUrl(url) {
 return "https://docs.google.com/viewer?url=" + encodeURIComponent(url) + "&embedded=true";
 }
-function segify(t){var s=String(t),out='',depth=0;for(var i=0;i<s.length;i++){if(s.substr(i,2)==='結果'){if(out&&!out.endsWith(''))out+='';out+='結果';i++;continue;}if(s.substr(i,3)==='小学生'){out+='小学生';i+=2;if(i+1<s.length&&s[i+1]!=='）')out+='';continue;}var ch=s[i];if(ch==='（'){if(out&&!out.endsWith(''))out+='';out+=ch;depth++;continue;}if(ch==='）'){out+=ch;depth--;if(i+1<s.length)out+='';continue;}if(ch==='／'){out+=ch;if(i+1<s.length&&s[i+1]!=='）')out+='';continue;}if(ch==='の'){out+=ch;if(i+1<s.length&&s[i+1]!=='）')out+='';continue;}if(ch===' '){if(depth===0){if(out&&!out.endsWith(''))out+='';}else{out+=ch;}continue;}if(ch==='・'){out+=ch;var o=s.lastIndexOf('（',i),c=s.indexOf('）',i),len=(o>=0&&c>=0)?(c-o+1):0;if(!(o>=0&&c>=0&&len<=12&&s[i-1]==='単'&&s[i+1]==='複')&&i+1<s.length&&s[i+1]!=='）')out+='';continue;}out+=ch;}return out.split('').filter(function(x){return x;}).map(function(x){return '<span class="seg">'+x+'</span>';}).join('');} function linkButtons(list, secondary) {
+function linkButtons(list, secondary) {
 if (!list ||!list.length) return "";
 var html = '<div class="links">';
 list.forEach(function (l) {
@@ -1182,7 +1182,7 @@ var pdf = isPdfUrl(l.url);
 var href = pdf? viewerUrl(l.url): l.url;
 var label = l.label + (pdf? "（ビューア）": "");
 var btn = '<a class="btn' + (secondary? " secondary": "") + '" href="' + href + '" target="_blank" rel="noopener">' +
-'<span class="kind">' + l.type + '</span>' + segify(label) + ICON_EXT + '</a>';
+'<span class="kind">' + l.type + '</span>' + label + ICON_EXT + '</a>';
 if (pdf) {
 html += '<div class="link-item">' + btn +
 '<a class="pdf-direct" href="' + l.url + '" target="_blank" rel="noopener">直接開く（ダウンロード）</a></div>';
