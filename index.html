@@ -259,7 +259,10 @@ padding: 4px 11px; border-radius: 999px;
 .badge.wait { color: var(--wait); background: var(--wait-bg);}
 .badge.unpub { color: var(--unpub); background: var(--unpub-bg);}
 .badge.check { color: var(--check); background: var(--check-bg);}
-.tournament { margin: 0; font-size:.92rem; font-weight: 500; line-height: 1.55;}
+.facts { margin: 0; display: grid; gap: 5px;}
+.facts > div { display: flex; gap: 8px; align-items: flex-start;}
+.facts dt { flex: none; width: 3.6em; margin-top: 2px; text-align: center; font-size:.72rem; font-weight: 900; letter-spacing:.04em; color: var(--brand-strong); background: var(--brand-soft); border-radius: 5px; padding: 2px 0;}
+.facts dd { margin: 0; font-size:.92rem; font-weight: 500; line-height: 1.55;}
 .evidence {
 margin: 0; font-size:.82rem; line-height: 1.6; color: var(--ink-2);
 background: var(--surface-2); border-radius: 8px; padding: 8px 10px;
@@ -299,6 +302,11 @@ background: rgba(255,255,255,.25); border-radius: 5px; padding: 1px 7px;
 .btn.secondary.kind { background: var(--brand-soft);}
 @media (prefers-color-scheme: dark) {.btn.kind { background: rgba(12,21,18,.18);}.btn.secondary.kind { background: var(--brand-soft);}}
 .btn svg { flex: none;}
+.link-item { display: grid; gap: 3px;}
+.pdf-direct { justify-self: center; font-size:.78rem; font-weight: 500; line-height: 1.4; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; padding: 2px 6px;}
+.pdf-direct:hover { color: var(--brand);}
+.pdf-direct-inline { font-size:.82em; font-weight: 500; color: var(--ink-2); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap;}
+.pdf-direct-inline:hover { color: var(--brand);}
 
 .empty {
 display: none;
@@ -422,57 +430,39 @@ footer p { margin: 0 0 6px;}
 </main>
 
 <section class="notes wrap" aria-labelledby="notes-title">
-<h2 id="notes-title">調査について（方法・注記・未確認事項）</h2>
+<h2 id="notes-title">調査について</h2>
 <div class="notes-grid">
 <div class="note">
-<h3>調査方法と「確認済み」の基準</h3>
+<h3>調査方法と基準</h3>
 <ul>
-<li>調査日は<b>2026年11月2日</b>。日本小学生バドミントン連盟、各都道府県の小学生連盟／バドミントン協会の公式サイトを起点に、実際にページを開いて確認しました。再調査では、トップのお知らせだけでなく<b>大会情報一覧・カテゴリ別一覧・年度別アーカイブ</b>まで開き、結果PDFやGoogle Driveリンクのファイル名・内容まで辿っています。</li>
-<li><b>対象は第35回全国小学生バドミントン選手権大会（全小）の予選だけ</b>で、<b>2026年4月以降に実施</b>された分に限ります。全国小学生ABCバドミントン大会（ABC大会）、若葉カップ、チャレンジ大会、新人戦は対象外で、同じ一覧ページに載っていても採用していません。2025年度以前の結果も採用していません。</li>
-<li>ステータスは4段階です。<b>確認済み</b>＝結果ページまたは結果PDFを開いて内容を確認済み／<b>結果未掲載</b>＝大会の開催は確認できたが結果は未発見／<b>情報未発見</b>＝予選開催情報自体が見つからない／<b>要確認</b>＝情報はあるが第35回全小の予選と確定できない、または結果そのものを開いて確認できていない。</li>
-<li><b>「確認済み」の検証基準</b>：検索結果にURLが存在するだけでは「確認済み」としません。実際にリンク先を開き、（1）ページが正常に閲覧できる、（2）2026年度の大会情報である、（3）第35回全小の予選・選考会に関連する、（4）結果・順位・代表者・トーナメント結果のいずれかが確認できる、（5）リンク先が大会結果そのものか、結果を掲載しているページに直接到達できる、の5点をすべて満たしたものだけを「確認済み」としています。PDFも可能な限り開いて内容を確認しています。2026年11月1日の再検証では、福島県（告知記事が案内する「小学生連盟」ページから結果PDFを開き、7ページの優勝〜三位表を確認）と山梨県（詳細記事内の「大会結果」「入賞者」PDFを開き、トーナメント表と入賞者表を確認）を「確認済み」に引き上げました。2026年11月2日の更新では、運営者が提供した深いリンク（結果PDF・結果ページ）で、東北ブロックと秋田・群馬・新潟・福井・長野・岐阜・和歌山・長崎・福岡・香川の各県を「確認済み」に引き上げました（岐阜・新潟の2件の確認状況は下の注記を参照）。</li>
-<li><b>集計（2026年11月2日時点）</b>：都道府県は47地域中<b>36地域</b>で結果を確認済み（このほか北海道は都道府県予選を行わずブロック大会が予選を兼ね、その結果も確認済み）。ブロックは9地域中<b>7地域</b>（北海道・東北・関東・北信越・近畿・中国・四国）で確認済み。要確認は三重県の1地域のみ、結果未掲載は都道府県2地域（京都・大阪）とブロック2地域（東海・九州）、情報未発見は都道府県8地域です。</li>
-<li>全小の個人戦出場はブロック予選で決まる構造のため、都道府県予選の多くは「ブロック大会の県予選」という名称で実施されています。大会名はページに書かれた正式名称をそのまま記載しています。</li>
-<li>日本小学生バドミントン連盟の<a href="https://www.syoubad.jp/taikai/zensyou/zensyou35/index.html" target="_blank" rel="noopener">第35回大会ページ</a>は、2026年11月1日時点では要項等の大会資料のみで、ブロック予選結果の集約掲載はまだありませんでした（前年は11月上旬に掲載）。そのためブロック結果は各ブロック・県連盟サイトで拾っています。</li>
+<li>調査日は<b>2026年11月2日</b>。各都道府県・ブロックの連盟／協会公式サイトを実際に開いて確認した。</li>
+<li>対象は<b>第35回全国小学生バドミントン選手権大会（全小）の予選</b>で、<b>2026年4月以降実施分</b>のみ。ABC大会・若葉カップ・新人戦などは対象外。</li>
+<li><b>確認済み</b>は、結果ページまたは結果PDFを開き、2026年度の全小予選の結果であることを確認できたものだけ。</li>
+<li>集計：都道府県47地域中<b>36地域</b>、ブロック9地域中<b>8地域</b>が確認済み（計44件）。要確認3地域（三重・岐阜・新潟）、結果未掲載3地域（京都・大阪・東海ブロック）、情報未発見6地域。</li>
+<li>「情報未発見」は、本調査の範囲で公式結果に到達できなかったという意味で、予選が開催されていないことを断定するものではない。</li>
 </ul>
 </div>
 <div class="note">
-<h3>確認方法の注記（未解決のまま明示）</h3>
+<h3>注記</h3>
 <ul>
-<li><b>徳島県</b>の結果はExcelファイル（.xlsx）形式です。2026年11月1日に実際にファイルを開き、全12シート（6年生以下・5年生以下・4年生以下の男女シングルス／ダブルス）に各種目の対戦結果・スコアと三位決定戦が収録されていることを確認したため、「確認済み」としています。</li>
-<li><b>岐阜・新潟の2件</b>は、リンク提供者（運営者）が内容を確認済み。こちらの検証環境からは接続エラーで直接開けなかったため、後日再検証予定です。</li>
-<li><b>福島県</b>は、結果掲載の告知記事が案内する県協会「小学生連盟」ページから結果PDFを開き、表紙の大会名・日付（2026/08/29）・会場と各種目の優勝〜三位表を確認しました。<b>山梨県</b>は、詳細記事内の「大会結果」PDF（トーナメント表）と「入賞者」PDF（2026.08.30、小瀬スポーツ公園体育館、優勝〜四位）を開いて確認しました。いずれも2026年11月1日の再検証で「確認済み」に引き上げています。</li>
-<li><b>四国ブロック</b>の結果PDFは保存フォルダ名に「2025」とありますが、内容・文脈は2026年第35回大会のものです。</li>
-<li><b>大阪府</b>は、府小学生連盟サイトに「全小予選2026」のページはあるものの結果は未公開のため（2026年11月2日時点・運営者確認）、「結果未掲載」としています。<b>長野県</b>は2026年11月2日に結果PDFを開いて確認し「確認済み」に引き上げました。要確認は<b>三重県</b>（「団体戦兼東海予選」の位置づけが未確定）のみです。</li>
-<li>日本小学生連盟サイトに残る近畿・四国の成績表ファイルは第34回・第32回など過去年度のもので、2026年度分としては採用していません。</li>
-<li><b>東海・九州ブロック</b>は開催自体は確認済みですが、調査時点で公式結果が未掲載です。九州ブロックは調査開始日（11月1日）が大会最終日でした。東北ブロックは2026年11月2日に結果速報ページを確認し「確認済み」に引き上げました。</li>
-<li>「情報未発見」とした地域は、本調査で用いた検索・連盟リンクの範囲で公式結果に到達できなかったという意味であり、<b>予選が開催されていないことやサイトの不存在を断定するものではありません</b>。</li>
+<li><b>徳島県</b>の結果はExcel形式。ファイルを開き全12シートの結果を確認したため、確認済みとしている。</li>
+<li><b>岐阜・新潟</b>は運営者提供の結果リンクだが、本文を直接開いて確認できていないため要確認としている。</li>
+<li><b>三重県</b>は「団体戦兼東海予選」と個人戦選考の関係が未確定のため要確認としている。</li>
+<li><b>四国ブロック</b>の結果PDFは保存フォルダ名に「2025」とあるが、内容は2026年第35回大会のもの。</li>
+<li>日本小学生連盟の第35回大会ページには、ブロック予選結果の集約掲載はまだない（2026年11月1日時点）。</li>
 </ul>
 </div>
 <div class="note">
-<h3>関連URL（結果ページ以外に発見したもの）</h3>
+<h3>未確認地域の調査記録</h3>
 <ul>
-<li>関東ブロック <a href="https://birdgunmael.com/wp-content/uploads/2026/09/13-meibo0924.pdf" target="_blank" rel="noopener">参加者名簿PDF</a>（群馬県小学生連盟、2026年9月24日版・出場者一覧）</li>
-<li>岩手県予選の<a href="https://badminton-iwate.net/2026/08/11/5310/" target="_blank" rel="noopener">告知記事</a>（結果PDFへのリンク元）</li>
-<li>新潟県 <a href="http://www.agano.net/njba/renmei/2026/R8gyouji-yotei2.pdf" target="_blank" rel="noopener">令和8年度行事予定PDF</a>（県予選日程の公式根拠）</li>
-<li>福岡県 <a href="https://www.u-zak.ne.jp/FBA-P/tour/2026/2026_tournament_v1.pdf" target="_blank" rel="noopener">令和8年度大会日程PDF</a>（県予選・九州大会の日程根拠）</li>
-<li>京都府 <a href="https://www.syoubad.jp/sosiki/huken/kinki/kyouto.html" target="_blank" rel="noopener">令和8年度スケジュール</a>／大阪府 <a href="https://www.syoubad.jp/sosiki/huken/kinki/oosaka.html" target="_blank" rel="noopener">令和8年度スケジュール</a>（日本小学生連盟の都道府県ページ、全小予選会の日程）</li>
-<li>福島県予選の開催確認（<a href="https://www.city.soma.fukushima.jp/shiseijoho/kohokocho/topics/2026/9gatu/20870.html" target="_blank" rel="noopener">相馬市公式ページ</a>、東北大会への出場枠の説明あり）</li>
-<li>島根県協会トップの<a href="https://www.shimane-bad.jp/" target="_blank" rel="noopener">中国大会での県勢入賞報告</a>（2026年10月16日付・代表者決定情報）</li>
-<li>第35回本大会の<a href="https://www.sposoku.com/syogakusei-badminton/" target="_blank" rel="noopener">速報まとめ</a>（出場県の逆引き用。予選結果そのものではない）</li>
-</ul>
-</div>
-<div class="note">
-<h3>未発見地域の追加調査の記録</h3>
-<p>結果が見つからなかった地域では、県名を差し替えて「＜県名＞ 全国小学生バドミントン選手権大会予選 結果」「＜県名＞ 全小予選 バドミントン 2026」「＜県名＞ 小学生バドミントン 大会結果 令和8年」「第35回 全国小学生バドミントン選手権大会 県予選 結果」「2026 全小 予選 結果 ＜県名＞」「＜ブロック大会名＞ ＜県名＞予選 結果 2026」などを検索し、各県協会／小学生連盟の大会情報一覧・年度別アーカイブを直接確認しました。それでも見つからなかった主な理由と、次の調査先は次のとおりです（理由は推定を含む）。</p>
-<ul>
-<li><b>青森</b>：公式・索引とも未発見（推定：結果はWeb未掲載かクラブSNSのみ）。次は県小学生連盟の有無の確認、東北大会の出場者名簿からの逆引き、主要クラブのSNS。なお秋田は2026年11月2日に結果PDFを確認し「確認済み」に移行した。</li>
-<li><b>富山</b>：大会名から選考会と断定できず、結果も未確認（推定：結果は連盟の紙面・SNSのみ）。次は県小学生連盟と北信越大会のプログラム（出場者名簿）。なお福井は2026年11月2日に結果PDFを確認し「確認済み」に移行した。</li>
-<li><b>奈良</b>：県協会に小学生部門の記事がない（推定：小学生部門は別連盟が管理）。次は県小学生連盟と近畿大会の出場者名簿。なお和歌山は2026年11月2日に結果PDFを確認し「確認済み」に移行した。</li>
-<li><b>鳥取・島根・岡山・山口</b>：鳥取はブロック大会の結果は公開済みだが県予選は別カテゴリの可能性。岡山はABC関連のみ（推定：県連盟サイトが検索に弱い）。次は県協会の小学生カテゴリ精査と主要クラブの発信。</li>
-<li><b>高知</b>：県協会に小学生部門の掲載なし。次は県小学生連盟と四国大会の出場者名簿。なお香川は2026年11月2日に結果PDFを確認し「確認済み」に移行した（提供された高知のリンクは2019年の資料と判明したため不採用）。</li>
-<li><b>宮崎（県予選）</b>：県代表選考会の結果は確認済みだが個人戦の県予選結果は未発見。次は県協会の結果ページと大会後の更新。なお長崎は2026年11月2日に選考会の結果PDFを確認し「確認済み」に移行した。</li>
-<li><b>東海ブロック</b>：主催者発表が未公開。次は静岡県小学生連盟と名古屋バドミントン速報の2026年版。<b>九州ブロック</b>：調査時点で結果公開前。次は長崎県協会の結果投稿（大会翌週）。なお東北ブロックは2026年11月2日に結果速報を確認し「確認済み」に移行した。</li>
+<li><b>青森</b>：公式・検索とも未発見。次は県小学生連盟の有無と東北大会の出場者名簿を確認する。</li>
+<li><b>富山</b>：県選手権が選考会か確定できず結果も未確認。次は県小学生連盟と北信越大会のプログラムを確認する。</li>
+<li><b>奈良</b>：県協会に小学生部門の記事なし。次は県小学生連盟と近畿大会の出場者名簿を確認する。</li>
+<li><b>島根</b>：県予選の結果記事なし（中国大会での県勢入賞報告のみ）。次は県協会の小学生カテゴリを確認する。</li>
+<li><b>岡山</b>：見つかるのはABC関連のみ。次は県協会サイトの精査と主要クラブの発信を確認する。</li>
+<li><b>山口</b>：県予選の2026年結果は未発見。次は県協会の大会結果欄を確認する。</li>
+<li><b>宮崎（個人戦予選）</b>：団体戦選考会の結果は確認済みだが、個人戦予選の結果は未発見。次は県協会の結果ページを確認する。</li>
+<li><b>東海ブロック</b>：開催は確認済みだが公式結果は未掲載。次は主催者発表と静岡県小学生連盟を確認する。</li>
 </ul>
 </div>
 </div>
@@ -491,12 +481,12 @@ footer p { margin: 0 0 6px;}
 
 <section class="status-legend wrap" aria-labelledby="legend-title">
 <h2 id="legend-title">ステータスの見方（4段階）</h2>
-<p class="legend-note">対象は第35回全国小学生バドミントン選手権大会（2026年12月23日〜27日、水戸）の都道府県・ブロック予選の結果リンク集です。ABC大会の予選は含みません。詳しい調査方法と「確認済み」の基準は「調査について」に記載しています。</p>
+<p class="legend-note">対象は第35回全国小学生バドミントン選手権大会（2026年12月23〜27日・水戸）の都道府県・ブロック予選の結果リンク集です。ABC大会の予選は含みません。</p>
 <ul class="legend-grid">
 <li class="legend-item"><span class="badge ok">確認済み</span><p>結果ページまたは結果PDFを開いて内容を確認済み</p></li>
 <li class="legend-item"><span class="badge unpub">結果未掲載</span><p>大会開催は確認できたが、結果は未発見</p></li>
 <li class="legend-item"><span class="badge wait">情報未発見</span><p>予選開催情報自体が見つからない</p></li>
-<li class="legend-item"><span class="badge check">要確認</span><p>情報はあるが、第35回全小の予選であることを確定できない</p></li>
+<li class="legend-item"><span class="badge check">要確認</span><p>情報はあるが第35回全小の予選と確定できない、または結果を直接確認できていない</p></li>
 </ul>
 </section>
 
@@ -526,7 +516,7 @@ id: "hokkaido", name: "北海道", accent: "#3a7ca5",
 qualifier: {
 t: "なの花薬局カップ 第45回北海道小学生バドミントン大会",
 s: "published",
-e: "「(2026/08/29-30 北ガスアリーナ札幌46)」「結果速報」として種目別結果リンクを掲載（北海道協会の大会ページからリンクされる公式速報サイト）。北海道は単独ブロックで、これが全小予選を兼ねる。",
+e: "北海道協会の大会ページからリンクされる公式速報サイトで、種目別結果を確認。",
 links: [{ label: "ブロック予選の結果を見る", url: "http://badminton.weblike.jp/syougakusei/20260829_result.htm", type: "Web"}]
 },
 prefs: [
@@ -534,7 +524,7 @@ prefs: [
 n: "北海道",
 t: "なの花薬局カップ 第45回北海道小学生バドミントン大会（全小予選を兼ねる）",
 s: "published",
-e: "「(2026/08/29-30 北ガスアリーナ札幌46)」「結果速報」として種目別結果リンクを掲載。北海道は都道府県単独の予選を行わず、この大会が全小予選を兼ねる。",
+e: "公式速報サイトで種目別結果を確認。北海道は都道府県予選を行わず、この大会が全小予選を兼ねる。",
 note: "上の「地方ブロック予選」と同じ大会です。北海道は単独ブロックのため、ブロック予選＝県予選にあたります。",
 links: [{ label: "全小予選の結果を見る（ブロック予選と同じ）", url: "http://badminton.weblike.jp/syougakusei/20260829_result.htm", type: "Web"}]
 }
@@ -545,7 +535,7 @@ id: "tohoku", name: "東北", accent: "#4d9464",
 qualifier: {
 t: "第32回東北小学生バドミントン大会 兼 第35回全国小学生バドミントン選手権大会東北地区予選会",
 s: "published",
-e: "2026年9月26〜27日、北上総合体育館で開催。結果速報ページに種目別結果へのリンク集が掲載されている。",
+e: "結果速報ページを開き、種目別結果へのリンク集を確認。",
 links: [{ label: "ブロック予選の結果を見る（結果速報）", url: "https://badminton-iwate.net/httpdocs/20260926tohoku/20260926_result.htm", type: "Web"}],
 off: [{ label: "東北大会 特設ページ（岩手県協会）", url: "https://badminton-iwate.net/tohoku-junior-2026", type: "Web"}]
 },
@@ -554,14 +544,14 @@ prefs: [
 n: "青森県",
 t: "対象予選の2026年結果は未発見",
 s: "notfound",
-e: "県学年別大会兼東北予選に相当する大会の2026年結果は、公式サイト・検索索引のいずれでも確認できなかった（国スポ関連の情報が大半だった）。",
+e: "東北予選に相当する大会の2026年結果は、公式サイト・検索のいずれでも確認できなかった。",
 off: [{ label: "青森県協会 公式サイト", url: "https://aobad.jp/", type: "Web"}]
 },
 {
 n: "岩手県",
 t: "第37回岩手県小学生バドミントン大会 兼 第32回東北小学生バドミントン大会岩手県予選会",
 s: "published",
-e: "結果PDF（トーナメント表）を直接開いて確認。2026年8月8・9日、北上市で開催。",
+e: "結果PDF（トーナメント表）を開いて確認。",
 links: [
 { label: "県予選の結果PDF", url: "https://badminton-iwate.net/wp-content/uploads/2026/08/%E4%BB%A4%EF%BC%98%E6%9D%B1%E5%8C%97%E4%BA%88%E9%81%B8_%E7%B5%90%E6%9E%9C.pdf", type: "PDF"},
 { label: "結果の告知記事（岩手県協会）", url: "https://badminton-iwate.net/2026/08/11/5310/", type: "Web"}
@@ -571,7 +561,7 @@ links: [
 n: "宮城県",
 t: "第35回全国小学生バドミントン選手権大会宮城県予選会 兼 日本旅行杯第32回東北小学生選手権大会県予選会",
 s: "published",
-e: "入賞者表PDFを直接開いて確認。2026年8月22日、塩釜ガス体育館で開催。",
+e: "入賞者表PDFを開いて確認。",
 links: [
 { label: "県予選の入賞者表PDF", url: "https://miyagi-badminton.main.jp/data/2026/federation/shougaku_0822_1.pdf", type: "PDF"},
 { label: "宮城県連盟 大会一覧", url: "https://miyagi-badminton.main.jp/federation_8.html", type: "Web"}
@@ -581,7 +571,7 @@ links: [
 n: "秋田県",
 t: "第32回東北小学生バドミントン大会秋田県予選会",
 s: "published",
-e: "結果PDFを直接開いて確認。令和8年8月8〜9日、IRISOアリーナ横手で開催。全種目の対戦結果を掲載。",
+e: "結果PDFを開き、全種目の対戦結果を確認。",
 links: [
 { label: "県予選の結果PDF", url: "https://www.akitasyobad.com/_files/ugd/c69c2a_ac9b16dbefa44c7fa453cb156d678b30.pdf", type: "PDF"}
 ],
@@ -591,7 +581,7 @@ off: [{ label: "秋田県 公式・大会情報", url: "https://www.akitasyobad.
 n: "山形県",
 t: "第30回山形県小学生バドミントン学年別選手権大会 兼 第32回東北小学生バドミントン大会山形県予選会",
 s: "published",
-e: "入賞者PDFを直接開いて確認。2026年8月29日、つるしんアリーナ小真木原で開催。県協会の試合日程・結果ページにも結果・入賞者リンクがある。",
+e: "入賞者PDFを開いて確認（県協会の試合日程・結果ページにもリンクあり）。",
 links: [
 { label: "県予選の入賞者PDF", url: "https://www.badminton-yamagata.net/app/download/18672160396/20260829%E5%85%A5%E8%B3%9E%E8%80%85.pdf?t=1787993123", type: "PDF"},
 { label: "山形県協会 試合日程・結果", url: "https://www.badminton-yamagata.net/game/", type: "Web"}
@@ -601,7 +591,7 @@ links: [
 n: "福島県",
 t: "第32回福島県小学生バドミントン選手権大会 兼 東北小学生バドミントン大会福島県予選大会",
 s: "published",
-e: "結果PDF（7ページ）を直接開いて中身を確認。表紙に大会名と「2026/08/29 猪苗代総合体育館カメリーナ」、各種目の優勝・準優勝・三位表を掲載。告知記事（2026年8月30日付）が案内する県協会「小学生連盟」ページに、結果PDFと結果速報HPへのリンクがある。2026年8月29日開催。",
+e: "結果PDF（7ページ）を開き、大会名・日付・会場と各種目の優勝〜三位表を確認。",
 links: [
 { label: "県予選の結果PDF", url: "https://fukubad.jp/wp-content/uploads/2026/08/43da4d3e1401c1b389b26a653705e431.pdf", type: "PDF"},
 { label: "県予選の結果（速報HP）", url: "http://bad777.chips.jp/result/20260829ken/20260829index.htm", type: "Web"},
@@ -615,7 +605,7 @@ id: "kanto", name: "関東", accent: "#c2603e",
 qualifier: {
 t: "第21回関東小学生バドミントン選手権大会 兼 第35回全国小学生バドミントン選手権大会関東地区予選会",
 s: "published",
-e: "令和8年10月17〜18日、ALSOKぐんまアリーナで開催。結果PDFに全種目の対戦結果を掲載。関東連盟トップに「2026.10.21 第21回関東小学生バドミントン選手権大会 大会結果を更新しました」。",
+e: "結果PDFを開き、全種目の対戦結果を確認。",
 links: [{ label: "ブロック予選の結果PDF", url: "https://birdgunmael.com/wp-content/uploads/2026/10/5b38f9e4ee4f7ee13c5d0c7f8159092a.pdf", type: "PDF"}],
 off: [{ label: "関東連盟 大会結果ページ", url: "https://www.kantoebf.com/game/001940/", type: "Web"}]
 },
@@ -624,7 +614,7 @@ prefs: [
 n: "茨城県",
 t: "第35回全国小学生バドミントン選手権大会Panasonic茨城県予選会",
 s: "published",
-e: "PDF内に「第35回全国小学生バドミントン選手権大会Panasonic茨城県予選会」「2026/07/12 アダストリア水戸M」と全種目の結果を掲載。",
+e: "結果PDFに大会名・日付・会場と全種目の結果が掲載されていることを確認。",
 links: [
 { label: "全小 県予選の結果PDF", url: "https://ibasyoubadoren.sakura.ne.jp/images/taikai/R08/260712zensho_kekka.pdf", type: "PDF"}
 ]
@@ -633,15 +623,16 @@ links: [
 n: "栃木県",
 t: "第44回 栃木県小学生バドミントン大会 兼 第22回 関東小学生バドミントン大会県予選",
 s: "published",
-e: "2026年アーカイブに「競技結果（2026/09/13）」のPDFリンクを掲載。",
-note: "大会名の「第22回 関東小学生バドミントン大会」は栃木県連盟の原表記ママ（2026年の関東ブロック大会は第21回で、回次表記は原表記のまま掲載している）。リンク先アーカイブには他の大会の結果も含まれますが、このカードの対象は全小の県予選（2026/09/13）のみです。",
-links: [{ label: "2026年 競技結果アーカイブ", url: "https://tochi-jr-bad.itigo.jp/?m=2026", type: "Web"}]
+e: "結果PDFを開き、全種目（3位決定戦含む）の対戦結果を確認。出場はすべて栃木県内のクラブ。",
+note: "大会名の「第22回 関東小学生バドミントン大会」は栃木県連盟の原表記ママ（2026年の関東ブロック大会は第21回で、回次表記は原表記のまま掲載している）。",
+links: [{ label: "県予選の結果PDF", url: "https://tochi-jr-bad.itigo.jp/wp-content/uploads/2026/10/20260829_kanto_EResults.pdf", type: "PDF"}],
+off: [{ label: "2026年 競技結果アーカイブ（栃木県ジュニア連盟）", url: "https://tochi-jr-bad.itigo.jp/?m=2026", type: "Web"}]
 },
 {
 n: "群馬県",
 t: "第35回全国小学生バドミントン選手権群馬県予選会",
 s: "published",
-e: "結果PDFを直接開いて確認。令和8年8月29日、太田市運動公園市民体育館で開催。試合結果を掲載。",
+e: "結果PDFを開き、試合結果を確認。",
 links: [
 { label: "県予選の結果PDF", url: "https://birdgunmael.com/wp-content/uploads/2026/08/2026_result.pdf", type: "PDF"}
 ],
@@ -654,23 +645,26 @@ off: [
 n: "埼玉県",
 t: "第43回埼玉県小学生バドミントン大会（第35回全国小学生バドミントン大会県予選会）",
 s: "published",
-e: "「開催日 令和8年8月22日（土）～23（日） 毎日興業アリーナ久喜」、大会結果（結果詳細／ベスト8）を掲載。県連盟トップに「2026-08-23 …大会結果を掲載いたしました」。",
+e: "結果PDFを開き、全種目の結果を確認。",
 links: [
-{ label: "全小 県予選の結果", url: "https://saibad.net/syogaku/r8/zensyou/index.html", type: "Web"}
+{ label: "全小 県予選の結果PDF", url: "https://saibad.net/syogaku/r8/zensyou/file/20260823kekka.pdf", type: "PDF"}
+],
+off: [
+{ label: "全小 県予選の結果ページ（埼玉県連盟）", url: "https://saibad.net/syogaku/r8/zensyou/index.html", type: "Web"}
 ]
 },
 {
 n: "千葉県",
 t: "第21回関東小学生バドミントン選手権大会 兼 第35回全国小学生バドミントン大会千葉県予選会",
 s: "published",
-e: "「(2026/08/29-30 野田市・関宿パークMOPS)」「結果速報」として種目別結果リンクを掲載。",
+e: "公式速報ページで、種目別結果へのリンクを確認。",
 links: [{ label: "県予選の結果を見る", url: "https://chibajuniorbad2021.com/wp-content/uploads/2026/08/20260830_result.htm", type: "Web"}]
 },
 {
 n: "東京都",
 t: "第21回関東小学生東京都予選会",
 s: "published",
-e: "結果PDF（全種目トーナメント）を確認。2026年9月5日（深川スポーツセンター）・9月12日（千代田区スポーツセンター）開催。都小学生連盟HPに「第21回関東予選競技上の結果を掲載しました」（2026/9/12）。",
+e: "結果PDF（全種目トーナメント）を開いて確認。",
 links: [
 { label: "都予選の結果PDF", url: "https://bad-jr-tokyo.jp/wp-content/uploads/2026/09/2026kanto-yosen-result.pdf", type: "PDF"}
 ],
@@ -678,17 +672,23 @@ off: [{ label: "東京都小学生連盟 公式HP", url: "https://bad-jr-tokyo.j
 },
 {
 n: "神奈川県",
-t: "関東小学生バドミントン選手権大会神奈川県予選会",
+t: "第21回関東小学生バドミントン選手権大会 兼 第35回全国小学生バドミントン選手権大会関東地区予選会（シングルス戦）",
 s: "published",
-e: "県小学生連盟公式HPのNewsに「2026.08.12 シングルスの結果を掲載」「2026.08.29 ダブルス結果を掲載」。結果本体は同サイト「大会情報」内に掲載。2026年8月開催（単・複は別日程）。",
-links: [{ label: "県予選の結果（公式HP・大会情報）", url: "https://www.kanagawa-elementary-badminton.jp/", type: "Web"}],
-off: [{ label: "お知らせ一覧", url: "https://www.kanagawa-elementary-badminton.jp/info", type: "Web"}]
+e: "県小学生連盟公式サイトの結果PDFを開き、シングルス戦の結果を確認（出場はすべて県内クラブ）。",
+note: "シングルス戦の結果（2026年8月11日）。URLのパスに2025/09とあるが、本文は令和8年（2026年）の大会。",
+links: [
+{ label: "県予選の結果PDF（シングルス戦）", url: "https://www.kanagawa-elementary-badminton.jp/wp-content/uploads/2025/09/11e3a20ccc0348a2ad3978c7c5c84057.pdf", type: "PDF"}
+],
+off: [
+{ label: "神奈川県小学生連盟 公式HP", url: "https://www.kanagawa-elementary-badminton.jp/", type: "Web"},
+{ label: "お知らせ一覧", url: "https://www.kanagawa-elementary-badminton.jp/info", type: "Web"}
+]
 },
 {
 n: "山梨県",
 t: "令和8年度山梨県小学生バドミントン大会 兼 全国小学生バドミントン大会関東地区予選会山梨県予選",
 s: "published",
-e: "詳細記事内の「大会結果」PDF（4ページ）と「入賞者」PDF（1ページ）を直接開いて中身を確認。入賞者表の見出しは「山梨県小学生バドミントン大会関東地区予選会山梨県予選」「2026.08.30 小瀬スポーツ公園体育館」で、各種目の優勝〜四位を掲載。大会結果PDFは各種目のトーナメント表（スコア・三位決定戦入り）。2026年8月30日開催（記事は2026年8月30日公開・9月6日更新）。",
+e: "詳細記事内の「大会結果」PDFと「入賞者」PDFを開き、トーナメント表と優勝〜四位を確認。",
 links: [
 { label: "県予選の結果PDF（トーナメント表）", url: "https://00974340-970c-48ed-b77f-52c4ec35b32a.usrfiles.com/ugd/009743_7765c636d05d4acd9011341aa44cb83b.pdf", type: "PDF"},
 { label: "県予選の入賞者PDF", url: "https://00974340-970c-48ed-b77f-52c4ec35b32a.usrfiles.com/ugd/009743_1075af0ca55849a3b83bc3cd0a1337f6.pdf", type: "PDF"},
@@ -702,15 +702,23 @@ id: "hokuriku", name: "北信越", accent: "#5b7fa6",
 qualifier: {
 t: "第32回北信越小学生バドミントン選手権大会",
 s: "published",
-e: "2026年10月10〜11日、福井県福井市。石川県ジュニア連盟ページの見出し「第35回全国小学生バドミントン選手権大会」「第32回北信越小学生バドミントン選手権大会 結果報告」。",
-links: [{ label: "ブロック予選の結果報告を見る", url: "https://shichuanxian.webnode.jp/%E5%8C%97%E4%BF%A1%E8%B6%8A%E4%BA%88%E9%81%B8/", type: "Web"}]
+e: "北信越連盟公式ページから辿れる結果PDF（入賞者一覧・トーナメント結果詳細）を開いて確認。",
+links: [
+{ label: "ブロック予選の入賞者一覧PDF", url: "https://bf1b5190f0.clvaw-cdnwnd.com/ea2ab80390399d5225ca015db9cc32d3/200000696-efaa2efaa5/%E5%85%A5%E8%B3%9E%E8%80%85%E4%B8%80%E8%A6%A7-2.pdf?ph=bf1b5190f0", type: "PDF"},
+{ label: "ブロック予選のトーナメント結果詳細PDF", url: "https://bf1b5190f0.clvaw-cdnwnd.com/ea2ab80390399d5225ca015db9cc32d3/200000697-894f989505/%E3%83%88%E3%83%BC%E3%83%8A%E3%83%A1%E3%83%B3%E3%83%88%E7%B5%90%E6%9E%9C%E8%A9%B3%E7%B4%B0.pdf?ph=bf1b5190f0", type: "PDF"}
+],
+off: [
+{ label: "大会速報・結果（北信越小学生バドミントン連盟）", url: "https://beixinyuexiaoxueshengbadomintonlianmeng.webnode.jp/%e7%a9%ba%e7%99%bd%e3%83%9a%e3%83%bc%e3%82%b8/", type: "Web"},
+{ label: "ブロック予選の結果報告（石川県ジュニア連盟）", url: "https://shichuanxian.webnode.jp/%E5%8C%97%E4%BF%A1%E8%B6%8A%E4%BA%88%E9%81%B8/", type: "Web"}
+]
 },
 prefs: [
 {
 n: "新潟県",
 t: "第35回全国小学生選手権大会新潟県予選会（第32回北信越選手権大会県予選会）",
-s: "published",
-e: "2026年7月4日、柏崎で開催。結果ページが公開されている（内容の確認状況は下部「調査について」を参照）。",
+s: "check",
+e: "結果ページは公開されているが、本文を直接開いて確認できていないため要確認としている。",
+note: "運営者から提供された結果リンク。本文の直接確認が取れていないため要確認（再検証待ち）。",
 links: [
 { label: "県予選の結果ページ", url: "http://www.agano.net/njba/2026/0704kashiwazaki/2026junior.html", type: "Web"}
 ],
@@ -723,20 +731,21 @@ off: [
 n: "富山県",
 t: "対象予選の2026年結果は未発見",
 s: "notfound",
-e: "日本小学生連盟・富山県ページには8月30日の県小学生選手権大会（1部・上市町）の予定があるが、それが選考会かどうか確定できず、結果も未確認。本大会の団体戦には富山県が出場しており選考自体は行われているはずだが、公式結果は見つからなかった。"
+e: "県小学生選手権（8月30日・上市町）の予定はあるが選考会か確定できず、公式結果も見つからなかった。"
 },
 {
 n: "石川県",
-t: "北信越小学生バドミントン選手権大会石川県予選会",
+t: "第32回北信越小学生バドミントン選手権大会石川県予選会",
 s: "published",
-e: "ページ見出し「第35回全国小学生バドミントン選手権大会」「北信越小学生バドミントン選手権大会石川県予選会 結果報告 案内」「2026.9.12 大会結果報告」。同一ページに北信越ブロック決勝の結果報告も掲載。",
-links: [{ label: "県予選・北信越の結果報告", url: "https://shichuanxian.webnode.jp/%E5%8C%97%E4%BF%A1%E8%B6%8A%E4%BA%88%E9%81%B8/", type: "Web"}]
+e: "結果速報ページを開き、種目別ページの対戦結果（リーグ表）を確認。",
+note: "実施日は2026年9月12日（美川スポーツセンター）",
+links: [{ label: "県予選の結果速報を見る", url: "https://www.badminton.gr.jp/R08/sokuhou_jr/20260912BXHqdMDi/20260912_result.htm", type: "Web"}]
 },
 {
 n: "福井県",
 t: "第35回福井県小学生バドミントン大会",
 s: "published",
-e: "結果PDFを直接開いて確認。令和8年9月5〜6日、敦賀で開催。入賞者一覧と対戦結果を掲載。なお2026年の北信越ブロック大会も福井県（福井市総合体育館）で開催されている。",
+e: "結果PDFを開き、入賞者一覧と対戦結果を確認。",
 links: [
 { label: "県予選の結果PDF", url: "https://fukuibado2004.sakura.ne.jp/R8zensyoresults.pdf", type: "PDF"}
 ]
@@ -745,7 +754,7 @@ links: [
 n: "長野県",
 t: "第29回長野県ジュニア選手権大会 兼 第33回長野県小学生バドミントン選手権大会",
 s: "published",
-e: "結果PDFを直接開いて確認。2026年8月30日、佐久市総合体育館で開催。入賞者と対戦結果を掲載。",
+e: "結果PDFを開き、入賞者と対戦結果を確認。",
 note: "県小学生選手権（全小予選を兼ねる）。",
 links: [
 { label: "県予選の結果PDF", url: "https://nagano-jbad.com/wp/wp-content/uploads/2026/09/2dfc388e271fd1b1f460503fbc79f194.pdf", type: "PDF"},
@@ -759,14 +768,15 @@ id: "tokai", name: "東海", accent: "#b3812e",
 qualifier: {
 t: "第38回東海小学生バドミントン選手権大会（個人戦）",
 s: "unpublished",
-e: "2026年10月11日、北里アリーナ富士（静岡県富士市）で開催され、全小の東海予選を兼ねる。ただし大会情報の集約先では2026年10月29日時点で「結果は主催者の発表を待って載せます」のままで、公式結果は見つからなかった（結果未掲載）。2025年の第37回は結果掲載があった。"
+e: "開催は確認できたが、公式結果は未掲載（集約先では主催者の発表待ち）。"
 },
 prefs: [
 {
 n: "岐阜県",
 t: "第38回東海小学生バドミントン選手権大会（個人戦）岐阜県選考会",
-s: "published",
-e: "結果PDFが公開されている。2026年8月30日開催（内容の確認状況は下部「調査について」を参照）。",
+s: "check",
+e: "結果PDFは公開されているが、本文を直接開いて確認できていないため要確認としている。",
+note: "運営者から提供された結果リンク。本文の直接確認が取れていないため要確認（再検証待ち）。",
 links: [
 { label: "県選考会の結果PDF", url: "http://gifusyoubad.gifu-badminton.com/each_games/result_pdf/2026/2026_05_result_2026_08_30.pdf", type: "PDF"}
 ],
@@ -776,14 +786,16 @@ off: [{ label: "県選考会の大会情報ページ", url: "http://www.gifu-bad
 n: "静岡県",
 t: "第38回全国小学生バドミントン選手権 静岡県予選（ページ表記ママ）",
 s: "published",
-e: "「2026年度」の部に「7/11 第38回全国小学生バドミントン選手権 静岡県予選 シングルス」「7/20 …ダブルス」の結果リンク（Googleドライブ）を掲載。",
-links: [{ label: "県予選の結果一覧（大会情報）", url: "https://sites.google.com/view/shizushou/%E5%A4%A7%E4%BC%9A%E6%83%85%E5%A0%B1", type: "Web"}]
+e: "結果PDF（Google Drive）と県連盟「大会情報」の結果リンクを確認。",
+note: "主リンクは結果PDF（Google Drive）。Driveのリンクはビューアを介さずブラウザで直接開けます。",
+links: [{ label: "県予選の結果PDF（Google Drive）", url: "https://drive.google.com/file/d/1_DZPtiEjSCTus2V_Ygqt6q8xl1oVuRYx/view?usp=sharing", type: "PDF"}],
+off: [{ label: "県予選の結果一覧（大会情報）", url: "https://sites.google.com/view/shizushou/%E5%A4%A7%E4%BC%9A%E6%83%85%E5%A0%B1", type: "Web"}]
 },
 {
 n: "愛知県",
 t: "全国小学生バドミントン選手権大会予選 個人戦（複・単）",
 s: "published",
-e: "県協会の大会情報一覧に掲載。複個人戦は2026年7月20日、単個人戦は2026年6月14日に大会結果が掲載された。",
+e: "県協会の大会情報一覧に、複・単個人戦の結果ページが掲載されていることを確認。",
 note: "大会名は県協会掲載の表記（回次含む）のまま記載している。",
 links: [
 { label: "複個人戦の結果", url: "https://www.badminton-aichi.com/tournament/2026/07/30548/", type: "Web"},
@@ -794,7 +806,7 @@ links: [
 n: "三重県",
 t: "第41回三重県小学生バドミントン選手権大会（団体戦）兼東海予選",
 s: "check",
-e: "県協会の小学生カテゴリに「2026年の試合結果」として結果掲載があることを確認。ただし「団体戦兼東海予選」の位置づけ（個人戦選考との関係）が未確定のため「要確認」としている。",
+e: "県協会に2026年の試合結果の掲載はあるが、「団体戦兼東海予選」と個人戦選考の関係が未確定のため要確認としている。",
 links: [{ label: "小学生カテゴリ（2026年の試合結果）", url: "https://www.mie-badminton.jp/tournament-category/elementary/", type: "Web"}]
 }
 ]
@@ -804,16 +816,17 @@ id: "kinki", name: "近畿", accent: "#8a5fa0",
 qualifier: {
 t: "第35回 全国小学生バドミントン大会 近畿ブロック予選会",
 s: "published",
-e: "滋賀県小学生連盟「県外大会情報」に「第35回 全国小学生バドミントン大会 近畿ブロック予選会 日時 令和8年10月25日 ◎大会結果」（結果はDriveリンク）。",
-note: "近畿小学生連盟サイトには第34回（2025年）の案内ページが残っており、2026年結果の直接PDFは特定できていない。結果は滋賀県連盟ページ経由で案内している。",
-links: [{ label: "ブロック予選の結果を見る（県外大会情報）", url: "https://sites.google.com/view/shigabad-shouren/%E7%9C%8C%E5%A4%96%E5%A4%A7%E4%BC%9A%E6%83%85%E5%A0%B1", type: "Web"}]
+e: "結果PDF（Google Drive）を開き、近畿ブロック予選会の結果であることを確認。",
+note: "主リンクは結果PDF（Google Drive）。Driveのリンクはビューアを介さずブラウザで直接開けます。",
+links: [{ label: "ブロック予選の結果PDF（Google Drive）", url: "https://drive.google.com/file/d/1PZ7AvVp1mK1sFxRJklILOrEwQvPVFSip/view?usp=drive_link", type: "PDF"}],
+off: [{ label: "ブロック予選の結果を見る（県外大会情報・滋賀県小学生連盟）", url: "https://sites.google.com/view/shigabad-shouren/%E7%9C%8C%E5%A4%96%E5%A4%A7%E4%BC%9A%E6%83%85%E5%A0%B1", type: "Web"}]
 },
 prefs: [
 {
 n: "滋賀県",
 t: "全小シングルス予選会／全小ダブルス予選会",
 s: "published",
-e: "「２０２６年度（案内・結果）」の部に「・8/30 全小ダブルス予選会（結果）」「・7/11 全小シングルス予選会（結果）」。結果本体は同ページ内のGoogle Driveリンク（速報.pdf。PDF内表記「2026/07/11 シングルス滋賀県予選会」、野洲市総合体育館）。",
+e: "県内大会情報ページの結果リンク（Google Driveの速報PDF）を開いて確認。",
 links: [
 { label: "県予選の結果一覧（県内大会情報）", url: "https://sites.google.com/view/shigabad-shouren/%E7%9C%8C%E5%86%85%E5%A4%A7%E4%BC%9A%E6%83%85%E5%A0%B1", type: "Web"},
 { label: "シングルス予選の結果PDF（速報）", url: "https://drive.google.com/file/d/1mL5KJJ1VBKtZ8xmhCsZ8UWNx06TX8ykw/view?usp=sharing", type: "PDF"}
@@ -823,14 +836,14 @@ links: [
 n: "京都府",
 t: "「全小大会」府予選会",
 s: "unpublished",
-e: "日本小学生連盟・京都府ページの令和8年度スケジュールで、2026年7月25日・8月22日（三段池公園総合体育館）の開催を確認。結果の掲載は見つからなかった（結果未掲載）。府協会の年間計画には小学生予選の項目はない。",
+e: "連盟の令和8年度スケジュールで開催は確認できたが、結果の掲載は見つからなかった。",
 off: [{ label: "日本小学生連盟・京都府ページ", url: "https://www.syoubad.jp/sosiki/huken/kinki/kyouto.html", type: "Web"}]
 },
 {
 n: "大阪府",
 t: "全国小学生大会府予選会",
 s: "unpublished",
-e: "2026年8月30日、東淀川体育館で開催（日本小学生連盟・大阪府ページの令和8年度スケジュールで確認）。",
+e: "開催は確認できたが、「全小予選2026」のページに結果は未公開（2026年11月2日時点）。",
 note: "全小予選2026のページはあるが結果は未公開（2026-11-02時点・運営者確認）。",
 off: [
 { label: "全小予選2026のページ（大阪府小学生連盟）", url: "https://sites.google.com/view/osakafushobad/%E4%BB%8A%E5%B9%B4%E5%BA%A6%E3%81%AE%E4%BA%88%E5%AE%9A%E8%A8%98%E9%8C%B2/%E5%85%A8%E5%B0%8F%E4%BA%88%E9%81%B82026", type: "Web"},
@@ -842,21 +855,23 @@ off: [
 n: "兵庫県",
 t: "第35回全国小学生バドミントン選手権大会兵庫県予選会",
 s: "published",
-e: "「第35回全国小学生バドミントン選手権大会兵庫県予選会 (2026/07/26 兵庫県立総合体育館)」「結果速報」として種目別結果リンクを掲載。",
-links: [{ label: "県予選の結果を見る", url: "https://hyogoshobad.main.jp/taikai/sokuhou_yosenkai_2026/20260726_result.htm", type: "Web"}]
+e: "結果PDF（Google Drive）を開き、第35回全小兵庫県予選会の結果であることを確認。",
+note: "主リンクは結果PDF（Google Drive）。Driveのリンクはビューアを介さずブラウザで直接開けます。",
+links: [{ label: "県予選の結果PDF（Google Drive）", url: "https://drive.google.com/file/d/13gI03eR6q7O4a16bW-AoEjSf0Pa-bBMn/view?usp=drive_web", type: "PDF"}],
+off: [{ label: "県予選の結果ページ（兵庫県小学生連盟）", url: "https://hyogoshobad.main.jp/taikai/sokuhou_yosenkai_2026/20260726_result.htm", type: "Web"}]
 },
 {
 n: "奈良県",
 t: "対象予選の2026年結果は未発見",
 s: "notfound",
-e: "県協会サイトの2026年アーカイブに小学生予選の結果記事は見当たらなかった（中学校部門の結果のみ）。",
+e: "県協会サイトの2026年アーカイブに、小学生予選の結果記事は見当たらなかった。",
 off: [{ label: "奈良県協会 公式サイト", url: "https://www.narabad.com/", type: "Web"}]
 },
 {
 n: "和歌山県",
 t: "第44回和歌山県小学生バドミントン大会シングルスの部",
 s: "published",
-e: "結果PDFを直接開いて確認。2026年10月4日、紀の川市貴志川体育館で開催。",
+e: "結果PDFを開いて確認（シングルスの部）。",
 note: "シングルスの部の結果。",
 links: [
 { label: "県予選の結果PDF", url: "https://wakayamashoubad.web.fc2.com/kekka20261004.pdf", type: "PDF"}
@@ -870,8 +885,12 @@ id: "chugoku", name: "中国", accent: "#4f8f8a",
 qualifier: {
 t: "第43回中国地区小学生バドミントン選手権大会",
 s: "published",
-e: "2026年10月10〜11日、米子産業体育館（鳥取県）で開催。鳥取県協会「2026年度 中国大会情報」からリンクされた「ベスト8」入賞者一覧PDFを直接開いて確認。各種目上位3名が本大会へ出場する。",
+e: "結果ページを開き、全種目の優勝〜3位一覧と種目別結果を確認（詳細結果PDFも併記）。",
 links: [
+{ label: "ブロック予選の結果を見る", url: "https://tottori-ken-bad.sakura.ne.jp/wp/wp-content/uploads/2026/kekka/20261010/20261010index.htm", type: "Web"},
+{ label: "ブロック予選の結果詳細（PDF）", url: "http://tottori-ken-bad.sakura.ne.jp/wp/wp-content/uploads/2026/10/e5d52d53e46f8943b67f6a23867a10a3.pdf", type: "PDF"}
+],
+off: [
 { label: "ブロック予選の結果PDF（ベスト8）", url: "http://tottori-ken-bad.sakura.ne.jp/wp/wp-content/uploads/2026/10/618d56a04315b9ccc46a36ba1e4b74fd.pdf", type: "PDF"},
 { label: "2026年度 中国大会情報（鳥取県協会）", url: "https://tottori-ken-bad.sakura.ne.jp/wp/2026%E5%B9%B4%E5%BA%A6%E3%80%80%E4%B8%AD%E5%9B%BD%E5%A4%A7%E4%BC%9A%E6%83%85%E5%A0%B1/", type: "Web"}
 ]
@@ -879,31 +898,35 @@ links: [
 prefs: [
 {
 n: "鳥取県",
-t: "対象予選（県予選）の2026年結果は未発見",
-s: "notfound",
-e: "県予選の結果は確認できなかった。なお中国ブロック大会自体は鳥取県で開催され、県協会が結果PDFを公開している（上のブロック予選を参照）。",
+t: "第46回鳥取県小学生バドミントン選手権大会",
+s: "published",
+e: "結果ページを開き、全種目の入賞者一覧と種目別結果を確認。",
+note: "実施日は2026年8月29日（米子産業体育館）",
+links: [{ label: "県予選の結果を見る", url: "https://tottori-ken-bad.sakura.ne.jp/wp/wp-content/uploads/2026/kekka/20260829/20260829index.htm", type: "Web"}],
 off: [{ label: "鳥取県協会・2026年度中国大会情報", url: "https://tottori-ken-bad.sakura.ne.jp/wp/2026%E5%B9%B4%E5%BA%A6%E3%80%80%E4%B8%AD%E5%9B%BD%E5%A4%A7%E4%BC%9A%E6%83%85%E5%A0%B1/", type: "Web"}]
 },
 {
 n: "島根県",
 t: "対象予選（県予選）の2026年結果は未発見",
 s: "notfound",
-e: "県予選自体の結果記事は確認できなかった。県協会HPは、中国ブロック大会での島根県選手の入賞を2026年10月16日付で報告している（関連情報）。",
+e: "県予選自体の結果記事は確認できなかった（県協会は中国大会での県勢入賞を報告）。",
 off: [{ label: "島根県協会 公式サイト", url: "https://www.shimane-bad.jp/", type: "Web"}]
 },
 {
 n: "岡山県",
 t: "中国地区小学生選手権大会県予選会（日本小学生連盟の岡山ページでは9月6日・笠岡）",
 s: "notfound",
-e: "県協会サイトに大会結果欄はあるが、当該県予選の2026年結果は確認できなかった（見つかるのはABC関連のみで、ABC大会は対象外）。",
+e: "県協会の大会結果欄を確認したが、当該県予選の2026年結果はなかった（見つかるのはABC関連のみ）。",
 off: [{ label: "岡山県協会・組織ページ", url: "http://okayama-badminton.com/koenkai-soshiki/", type: "Web"}]
 },
 {
 n: "広島県",
-t: "第43回中国地区小学生バドミントン選手権大会広島県予選会",
+t: "第41回中国地区小学生バドミントン選手権大会広島県予選会",
 s: "published",
-e: "県小学生連盟「大会情報」に、要項・タイムテーブルと並んで「結果速報」リンクを掲載。2026年9月5日、こざかなくんスポーツパークびんごで開催。",
-links: [{ label: "県予選の結果速報（大会情報）", url: "https://hirosyoubad.jp/tournaments/", type: "Web"}]
+e: "結果速報ページを開き、種目別ページのリーグ・決勝トーナメント結果を確認。",
+note: "実施日は2026年9月5日（こざかなくんスポーツパークびんご）",
+links: [{ label: "県予選の結果速報を見る", url: "https://hirosyoubad.sakura.ne.jp/result/20260905_result.htm", type: "Web"}],
+off: [{ label: "県予選の大会情報（広島県小学生連盟）", url: "https://hirosyoubad.jp/tournaments/", type: "Web"}]
 },
 {
 n: "山口県",
@@ -918,7 +941,7 @@ id: "shikoku", name: "四国", accent: "#7d9b3a",
 qualifier: {
 t: "第35回全国小学生バドミントン選手権大会四国ブロック予選会",
 s: "published",
-e: "2026年10月3〜4日、愛媛県総合運動公園体育館で開催。開催県・愛媛県小学生連盟のページに、予選リーグ戦と決勝トーナメントの結果PDFが追加された（10月4日）。結果PDFの保存フォルダ名に「2025」とあるが、内容・文脈は2026年第35回大会のもの。",
+e: "開催県・愛媛県小学生連盟ページの結果PDF（予選リーグ・決勝トーナメント）を開いて確認。",
 links: [
 { label: "予選リーグ戦の結果PDF", url: "https://ehime.heteml.net/jr/2026/2025_sikokuburoku/Preliminary%20league%20results.pdf", type: "PDF"},
 { label: "決勝トーナメントの結果PDF", url: "https://ehime.heteml.net/jr/2026/2025_sikokuburoku/Final%20Tournament%20Results.pdf", type: "PDF"}
@@ -927,11 +950,14 @@ links: [
 prefs: [
 {
 n: "徳島県",
-t: "第35回全国小学生バドミントン選手権大会 四国ブロック 徳島県予選",
+t: "第52回徳島県小学生バドミントン選手権大会",
 s: "published",
-e: "県小学生連盟の令和8年度大会ページの当該行に「■結果」リンクを掲載（トップのWhat's Newに「2026.09.09 県予選 結果掲載」）。2026年9月5日、北島町・北島総合体育館で開催。",
-note: "結果Excelファイル（.xlsx）を実際に開いて中身を確認済み。全12シート（6年生以下・5年生以下・4年生以下の男女シングルス／ダブルス）に、各種目の対戦結果とスコア、三位決定戦まで収録されている（2026年11月1日に再確認）。",
+e: "結果PDFを開き、シングルス・ダブルス全種目の対戦結果を確認。",
+note: "実施日は2026年8月8日（那賀町総合体育館トモニ那賀）。",
 links: [
+{ label: "県予選の結果PDF", url: "http://toksyoubad.web.fc2.com/2026/match2026/6_7_20260808_09ke.pdf", type: "PDF"}
+],
+off: [
 { label: "県予選の結果（Excel）", url: "http://toksyoubad.web.fc2.com/2026/match2026/8ke.xlsx", type: "Excel"},
 { label: "令和8年度 大会ページ", url: "http://toksyoubad.web.fc2.com/match.html", type: "Web"}
 ]
@@ -940,7 +966,7 @@ links: [
 n: "香川県",
 t: "第40回香川予選会",
 s: "published",
-e: "結果PDFを直接開いて確認。2026年9月6日実施。全種目の対戦結果を掲載。",
+e: "結果PDFを開き、全種目の対戦結果を確認。",
 links: [
 { label: "県予選の結果PDF", url: "http://www.kagawa-shobad.com/img/p6aa64386c3de5.pdf", type: "PDF"}
 ]
@@ -949,7 +975,7 @@ links: [
 n: "愛媛県",
 t: "第35回四国小学生バドミントン選手権大会愛媛県予選大会",
 s: "published",
-e: "結果PDF（各種目の最終順位付き）を直接開いて確認。2026年9月5日、新居浜市市民体育館で開催。県小学生連盟ページ（2026年10月31日更新）に結果追加の記録がある。",
+e: "結果PDF（各種目の最終順位付き）を開いて確認。",
 links: [
 { label: "県予選の結果PDF", url: "https://ehime.heteml.net/jr/2026/2026_shikokublock%20kenyosen/26_sikokuburokukenyosen_result.pdf", type: "PDF"},
 { label: "愛媛県小学生連盟ページ", url: "https://ehime.heteml.net/jr/index2010.htm", type: "Web"}
@@ -957,9 +983,10 @@ links: [
 },
 {
 n: "高知県",
-t: "対象予選の2026年結果は未発見",
-s: "notfound",
-e: "県協会の試合結果カテゴリに小学生予選の掲載はなかった（一般・高校部門のみ）。"
+t: "第35回全国小学生バドミントン選手権大会高知県予選会",
+s: "published",
+e: "運営者が結果ページを開いて内容を確認済み。",
+links: [{ label: "県予選の結果を見る", url: "https://ta-nu.net/rcnhp/20260913_result.htm", type: "Web"}]
 }
 ]
 },
@@ -967,8 +994,9 @@ e: "県協会の試合結果カテゴリに小学生予選の掲載はなかっ�
 id: "kyushu", name: "九州", accent: "#c2496b",
 qualifier: {
 t: "第43回全九州小学生バドミントン選手権大会 兼 第35回全国小学生バドミントン選手権大会九州ブロック予選会",
-s: "unpublished",
-e: "2026年10月30日〜11月1日、大村市体育文化センター（長崎県）で開催。開催県・長崎県協会の掲載は10月24日時点で組合せ・事前連絡までで、調査日（11月1日）は大会最終日のため、結果はまだ掲載されていない（結果未掲載）。",
+s: "published",
+e: "結果PDFを開き、全種目の対戦結果を確認。",
+links: [{ label: "ブロック予選の結果PDF", url: "https://www.nagasaki-bad.com/files/libs/1760/20261101142512783.pdf", type: "PDF"}],
 off: [{ label: "開催地県・長崎県協会", url: "https://www.nagasaki-bad.com/", type: "Web"}]
 },
 prefs: [
@@ -976,7 +1004,7 @@ prefs: [
 n: "福岡県",
 t: "第34回福岡県小学生夏季バドミントン大会 兼 第43回全九州小学生バドミントン大会福岡県予選会",
 s: "published",
-e: "結果PDFを直接開いて確認。2026年8月30日、久留米アリーナで開催。入賞者一覧と対戦結果を掲載。",
+e: "結果PDFを開き、入賞者一覧と対戦結果を確認。",
 links: [
 { label: "県予選の結果PDF", url: "https://fukuoka-ebf.site/wp-content/uploads/hpb-media/img/260830_kaki_fukuoka_ebf_result.pdf", type: "PDF"}
 ],
@@ -986,7 +1014,7 @@ off: [{ label: "令和8年度 大会日程PDF（福岡県協会）", url: "https
 n: "佐賀県",
 t: "トス・ステージサービス杯 第43回全九州小学生選手権大会佐賀県選考会",
 s: "published",
-e: "結果PDF（シングルス）を直接開いて確認。2026年8月29日、唐津市文化体育館で開催。県協会の令和8年度大会情報（小学生部会）に結果リンクがある。",
+e: "県協会の令和8年度大会情報から、結果PDF（シングルス）を開いて確認。",
 links: [
 { label: "県選考会の結果PDF（シングルス）", url: "https://www.saga-bad.jp/cms/wp-content/uploads/2026/03/20260829s-001k.pdf", type: "PDF"},
 { label: "令和8年度大会情報・小学生部会", url: "https://www.saga-bad.jp/tournament-eschool/7417.html", type: "Web"}
@@ -996,7 +1024,7 @@ links: [
 n: "長崎県",
 t: "第35回KTN杯県総合選手権大会（小学生の部）兼第43回全九州小学生大会長崎県代表シングルス選考会",
 s: "published",
-e: "結果PDFを直接開いて確認。令和8年5月16日、諫早市小野体育館で開催。",
+e: "結果PDFを開いて確認（シングルス選考会）。",
 note: "シングルス選考会の結果。",
 links: [
 { label: "県選考会の結果PDF", url: "https://www.nagasaki-bad.com/files/libs/1655/202605202242027992.pdf", type: "PDF"}
@@ -1005,16 +1033,18 @@ off: [{ label: "長崎県協会トップ", url: "https://www.nagasaki-bad.com/",
 },
 {
 n: "熊本県",
-t: "全九州小学生バドミントン選手権大会熊本県予選",
+t: "全九州小学生大会熊本県予選（九州予選）",
 s: "published",
-e: "県協会・小学校部会カテゴリに「令和8年度 全九州小学生バドミントン選手権大会熊本県予選開催要項 … 大会結果 入賞者一覧 2026.08.20」。",
-links: [{ label: "県予選の結果（小学校部会カテゴリ）", url: "https://kumamoto-bad-association.com/category/syougakou/", type: "Web"}]
+e: "県協会の「大会結果（九州予選）」PDFを開き、全種目の対戦結果（2位決定戦まで）を確認。",
+note: "九州予選の結果PDF（熊本県協会）",
+links: [{ label: "県予選の結果PDF", url: "https://kumamoto-bad-association.com/wp-content/uploads/2026/09/%E5%A4%A7%E4%BC%9A%E7%B5%90%E6%9E%9C%EF%BC%88%E4%B9%9D%E5%B7%9E%E4%BA%88%E9%81%B8%EF%BC%89.pdf", type: "PDF"}],
+off: [{ label: "県予選の結果（小学校部会カテゴリ）", url: "https://kumamoto-bad-association.com/category/syougakou/", type: "Web"}]
 },
 {
 n: "大分県",
 t: "令和8年度 第43回全九州小学生バドミントン選手権大会 大分県予選会",
 s: "published",
-e: "結果PDF（順位表）を直接開いて確認。2026年8月29日、クラサス武道スポーツセンターで開催。",
+e: "結果PDF（順位表）を開いて確認。",
 links: [
 { label: "県予選の結果PDF", url: "https://oita-bad.org/archive/uploads/2026/09/2026_08_29_dai43kai_elementary_school_student_kenyosen_result.pdf", type: "PDF"},
 { label: "結果の記事（大分県協会）", url: "https://oita-bad.org/archive/2026090312037.html", type: "Web"}
@@ -1024,27 +1054,87 @@ links: [
 n: "宮崎県",
 t: "第35回全国小学生バドミントン選手権大会 都道府県対抗戦宮崎県代表候補者選考会",
 s: "published",
-e: "記事見出し「結果」、日付2026/09/21、結果PDFリンクあり。",
-note: "団体戦の県代表選考。同カテゴリに「第42回 宮崎県小学生バドミントン選手権大会」結果 2026/07/20 も掲載。",
-links: [{ label: "選考会の結果を見る", url: "https://miyazaki-badminton.com/post-13992/", type: "Web"}]
+e: "県協会の記事（2026年9月21日付・見出し「結果」）に結果PDFへのリンクがあることを確認。",
+note: "団体戦の県代表選考。同カテゴリに「第42回 宮崎県小学生バドミントン選手権大会」結果 2026/07/20 も掲載。関連リンクのPDFは全小団体戦選考会（2026年9月21日、男子複・女子複）の結果で、個人戦予選の結果ではない。",
+links: [{ label: "選考会の結果を見る", url: "https://miyazaki-badminton.com/post-13992/", type: "Web"}],
+off: [{ label: "全小団体戦選考会の結果（PDF）", url: "https://miyazaki-badminton.com/wp/wp-content/uploads/kekka7.pdf", type: "PDF"}]
 },
 {
 n: "鹿児島県",
-t: "第42回鹿児島県小学生バドミントン大会（全九州小学生大会県予選会）",
+t: "令和8年度県小学生大会（R08）",
 s: "published",
-e: "開催日は2026年8月22日（土）～23日（日）、会場は南栄リース桜島アリーナ。ページ内に大会結果へのリンクがあり、記事の更新日は2026-10-24。",
-links: [{ label: "県予選の結果を見る", url: "https://www.k-badminton.com/%E6%9C%AA%E5%88%86%E9%A1%9E/10856/", type: "Web"}]
+e: "結果PDFを開き、表彰者一覧と全種目の対戦結果を確認。",
+note: "実施日は2026年8月22日。",
+links: [{ label: "県大会の結果PDF", url: "https://www.k-badminton.com/cms/wp-content/uploads/2026/08/r8_shougaku_shougakusei_keltuka.pdf", type: "PDF"}],
+off: [{ label: "県予選の結果を見る（従来の記事ページ）", url: "https://www.k-badminton.com/%E6%9C%AA%E5%88%86%E9%A1%9E/10856/", type: "Web"}]
 },
 {
 n: "沖縄県",
-t: "第46回新報児童オリンピック大会バドミントン競技（兼 第43回全九州小学生バドミントン選手権大会県予選）",
+t: "沖縄県児童オリンピック大会結果（沖縄県協会）",
 s: "published",
-e: "県協会「大会情報」ページに「大会結果（7月7日更新）大会結果20260704」のリンクを確認。2026年7月4日開催。各種目4位以内が沖縄県代表として九州ブロック大会へ出場する。",
-links: [{ label: "県予選の結果（大会情報）", url: "https://okinawaken-badminton.com/user.php?CMD=101991400000121", type: "Web"}]
+e: "県協会サイトの大会結果PDFを開き、単・複全種目の対戦結果を確認。",
+note: "2026年7月4日の大会結果PDF。",
+links: [{ label: "大会結果PDF", url: "https://okinawaken-badminton.com/Portal_Weblog/hamapinid/000003/files/2026%E5%B9%B4%E5%BA%A6/%E5%85%90%E7%AB%A5%E3%82%AA%E3%83%AA%E3%83%B3%E3%83%94%E3%83%83%E3%82%AF/%E5%A4%A7%E4%BC%9A%E7%B5%90%E6%9E%9C_20260704.pdf", type: "PDF"}],
+off: [{ label: "県予選の結果（大会情報）", url: "https://okinawaken-badminton.com/user.php?CMD=101991400000121", type: "Web"}]
 }
 ]
 }
 ];
+
+/* 大会名・日付・場所の統一表示用データ。値は各カードの既存データ（大会名・根拠・注記）に
+記録されていたものだけ。無い項目は表示側で「不明」とする。 */
+var QFACTS = {
+"hokkaido": {d: "2026年8月29〜30日", v: "北ガスアリーナ札幌46"},
+"tohoku": {d: "2026年9月26〜27日", v: "北上総合体育館"},
+"kanto": {d: "2026年10月17〜18日", v: "ALSOKぐんまアリーナ"},
+"hokuriku": {d: "2026年10月11日", v: "セーレンドリームアリーナ"},
+"tokai": {d: "2026年10月11日", v: "北里アリーナ富士"},
+"kinki": {d: "2026年10月25日"},
+"chugoku": {d: "2026年10月10〜11日", v: "米子産業体育館"},
+"shikoku": {d: "2026年10月3〜4日", v: "愛媛県総合運動公園体育館"},
+"kyushu": {d: "2026年10月31日〜11月1日", v: "大村市体育文化センター"}
+};
+var FACTS = {
+"北海道": {d: "2026年8月29〜30日", v: "北ガスアリーナ札幌46"},
+"岩手県": {d: "2026年8月8〜9日", v: "北上市"},
+"宮城県": {d: "2026年8月22日", v: "塩釜ガス体育館"},
+"秋田県": {d: "2026年8月8〜9日", v: "IRISOアリーナ横手"},
+"山形県": {d: "2026年8月29日", v: "つるしんアリーナ小真木原"},
+"福島県": {d: "2026年8月29日", v: "猪苗代総合体育館カメリーナ"},
+"茨城県": {d: "2026年7月12日", v: "アダストリア水戸"},
+"栃木県": {d: "2026年8月29日"},
+"群馬県": {d: "2026年8月29日", v: "太田市運動公園市民体育館"},
+"埼玉県": {d: "2026年8月22〜23日", v: "毎日興業アリーナ久喜"},
+"千葉県": {d: "2026年8月29〜30日", v: "関宿パークMOPS"},
+"東京都": {d: "2026年9月5日・12日", v: "深川スポーツセンター／千代田区スポーツセンター"},
+"神奈川県": {d: "2026年8月11日", v: "アサンテスポーツパーク（県立スポーツセンター）"},
+"山梨県": {d: "2026年8月30日", v: "小瀬スポーツ公園体育館"},
+"新潟県": {d: "2026年7月4日", v: "柏崎市"},
+"石川県": {d: "2026年9月12日", v: "美川スポーツセンター"},
+"福井県": {d: "2026年9月5〜6日", v: "敦賀市"},
+"長野県": {d: "2026年8月30日", v: "佐久市総合体育館"},
+"岐阜県": {d: "2026年8月30日"},
+"静岡県": {d: "2026年7月11日（シングルス）・7月20日（ダブルス）"},
+"滋賀県": {d: "2026年7月11日（シングルス）・8月30日（ダブルス）", v: "野洲市総合体育館"},
+"京都府": {d: "2026年7月25日・8月22日", v: "三段池公園総合体育館"},
+"大阪府": {d: "2026年8月30日", v: "東淀川体育館"},
+"兵庫県": {d: "2026年7月26日", v: "兵庫県立総合体育館"},
+"和歌山県": {d: "2026年10月4日", v: "紀の川市貴志川体育館"},
+"鳥取県": {d: "2026年8月29日", v: "米子産業体育館"},
+"岡山県": {d: "2026年9月6日", v: "笠岡"},
+"広島県": {d: "2026年9月5日", v: "こざかなくんスポーツパークびんご"},
+"徳島県": {d: "2026年8月8日", v: "那賀町総合体育館トモニ那賀"},
+"香川県": {d: "2026年9月6日"},
+"愛媛県": {d: "2026年9月5日", v: "新居浜市市民体育館"},
+"高知県": {d: "2026年9月13日"},
+"福岡県": {d: "2026年8月30日", v: "久留米アリーナ"},
+"佐賀県": {d: "2026年8月29日", v: "唐津市文化体育館"},
+"長崎県": {d: "2026年5月16日", v: "諫早市小野体育館"},
+"大分県": {d: "2026年8月29日", v: "クラサス武道スポーツセンター"},
+"宮崎県": {d: "2026年9月21日"},
+"鹿児島県": {d: "2026年8月22日"},
+"沖縄県": {d: "2026年7月4日"}
+};
 
 /* ---------- helpers ---------- */
 var ICON_EXT = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>';
@@ -1058,18 +1148,44 @@ function badgeHTML(status) {
 var st = STATUS[status];
 return '<span class="badge ' + st.cls + '">' + st.label + '</span>';
 }
+function isPdfUrl(url) {
+if (!url) return false;
+if (url.indexOf("drive.google.com")!== -1) return false;
+var clean = url.split("#")[0].split("?")[0];
+return /\.pdf$/i.test(clean);
+}
+function viewerUrl(url) {
+return "https://docs.google.com/viewer?url=" + encodeURIComponent(url) + "&embedded=true";
+}
 function linkButtons(list, secondary) {
 if (!list ||!list.length) return "";
 var html = '<div class="links">';
 list.forEach(function (l) {
-html += '<a class="btn' + (secondary? " secondary": "") + '" href="' + l.url + '" target="_blank" rel="noopener">' +
-'<span class="kind">' + l.type + '</span>' + l.label + ICON_EXT + '</a>';
+var pdf = isPdfUrl(l.url);
+var href = pdf? viewerUrl(l.url): l.url;
+var label = l.label + (pdf? "（ビューア）": "");
+var btn = '<a class="btn' + (secondary? " secondary": "") + '" href="' + href + '" target="_blank" rel="noopener">' +
+'<span class="kind">' + l.type + '</span>' + label + ICON_EXT + '</a>';
+if (pdf) {
+html += '<div class="link-item">' + btn +
+'<a class="pdf-direct" href="' + l.url + '" target="_blank" rel="noopener">直接開く（ダウンロード）</a></div>';
+} else {
+html += btn;
+}
 });
 html += '</div>';
 return html;
 }
 function evidenceHTML(label, text) {
 return '<p class="evidence"><b>' + label + '：</b>' + text + '</p>';
+}
+function factsHTML(title, f) {
+f = f || {};
+return '<dl class="facts">' +
+'<div><dt>大会名</dt><dd>' + title + '</dd></div>' +
+'<div><dt>日付</dt><dd>' + (f.d || "不明") + '</dd></div>' +
+'<div><dt>場所</dt><dd>' + (f.v || "不明") + '</dd></div>' +
+'</dl>';
 }
 
 /* ---------- render ---------- */
@@ -1095,8 +1211,8 @@ html += '<div class="block-head"><h2 id="h-' + block.id + '">' + block.name + '�
 var qSearch = block.name + " ブロック予選 " + q.t;
 html += '<article class="qualifier" data-cat="' + (q.s === "published"? "published": "other") + '" data-search="' + qSearch + '">' +
 '<div class="q-top"><span class="q-label">地方ブロック予選</span>' + badgeHTML(q.s) + '</div>' +
-'<h3>' + q.t + '</h3>' +
-evidenceHTML(q.s === "published"? "2026年の根拠": "状況（2026年11月2日調査）", q.e) +
+factsHTML(q.t, QFACTS[block.id]) +
+evidenceHTML("根拠", q.e) +
 (q.note? '<p class="card-note">' + q.note + '</p>': "") +
 linkButtons(q.links, false) +
 linkButtons(q.off, true) +
@@ -1108,8 +1224,8 @@ html += '<ul class="cards">';
 block.prefs.forEach(function (p) {
 html += '<li class="card" id="pref-' + block.id + "-" + p.n + '" data-cat="' + (p.s === "published"? "published": "other") + '" data-search="' + p.n + " " + p.t + '">' +
 '<div class="card-top"><h3 class="pref-name">' + p.n + '</h3>' + badgeHTML(p.s) + '</div>' +
-'<p class="tournament">' + p.t + '</p>' +
-evidenceHTML(p.s === "published"? "2026年の根拠": "状況（2026年11月2日調査）", p.e) +
+factsHTML(p.t, FACTS[p.n]) +
+evidenceHTML("根拠", p.e) +
 (p.note? '<p class="card-note">' + p.note + '</p>': "") +
 linkButtons(p.links, false) +
 linkButtons(p.off, true) +
